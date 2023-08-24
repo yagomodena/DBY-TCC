@@ -63,29 +63,9 @@ namespace DBY___TCC.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _new {
+        internal static System.Drawing.Bitmap artigos_de_higiene__1_ {
             get {
-                object obj = ResourceManager.GetObject("new", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap artigos_de_higiene {
-            get {
-                object obj = ResourceManager.GetObject("artigos-de-higiene", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap botao_de_inicio {
-            get {
-                object obj = ResourceManager.GetObject("botao-de-inicio", resourceCulture);
+                object obj = ResourceManager.GetObject("artigos-de-higiene (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +93,9 @@ namespace DBY___TCC.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap carrinho_de_compras {
+        internal static System.Drawing.Bitmap casa {
             get {
-                object obj = ResourceManager.GetObject("carrinho-de-compras", resourceCulture);
+                object obj = ResourceManager.GetObject("casa", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +103,9 @@ namespace DBY___TCC.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap cliente {
+        internal static System.Drawing.Bitmap cliente__1_ {
             get {
-                object obj = ResourceManager.GetObject("cliente", resourceCulture);
+                object obj = ResourceManager.GetObject("cliente (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +113,9 @@ namespace DBY___TCC.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap configuracao {
+        internal static System.Drawing.Bitmap configuracoes_cog {
             get {
-                object obj = ResourceManager.GetObject("configuracao", resourceCulture);
+                object obj = ResourceManager.GetObject("configuracoes-cog", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +123,9 @@ namespace DBY___TCC.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap entrega_rapida {
+        internal static System.Drawing.Bitmap entrega_rapida__1_ {
             get {
-                object obj = ResourceManager.GetObject("entrega-rapida", resourceCulture);
+                object obj = ResourceManager.GetObject("entrega-rapida (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,29 +133,9 @@ namespace DBY___TCC.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap estoque {
+        internal static System.Drawing.Bitmap fatura__1_ {
             get {
-                object obj = ResourceManager.GetObject("estoque", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap fatura {
-            get {
-                object obj = ResourceManager.GetObject("fatura", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap H {
-            get {
-                object obj = ResourceManager.GetObject("H", resourceCulture);
+                object obj = ResourceManager.GetObject("fatura (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,29 +153,39 @@ namespace DBY___TCC.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_banco_de_dados_100 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-banco-de-dados-100", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_direitos_de_usuário_100 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-direitos-de-usuário-100", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Login {
             get {
                 object obj = ResourceManager.GetObject("Login", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lupa {
+            get {
+                object obj = ResourceManager.GetObject("lupa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lupa__1_ {
+            get {
+                object obj = ResourceManager.GetObject("lupa (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap produtos {
+            get {
+                object obj = ResourceManager.GetObject("produtos", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,9 +203,9 @@ namespace DBY___TCC.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap sair {
+        internal static System.Drawing.Bitmap sair__1_ {
             get {
-                object obj = ResourceManager.GetObject("sair", resourceCulture);
+                object obj = ResourceManager.GetObject("sair (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -95,6 +95,7 @@
             this.btnRegistrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnRegistrar.TabIndex = 7;
             this.btnRegistrar.TabStop = false;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // pictureBox1
             // 

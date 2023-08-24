@@ -181,10 +181,23 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\CorTema.cs" />
     <Compile Include="DBYTCCDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBYTCCDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Cliente\frmCadCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Cliente\frmCadCliente.Designer.cs">
+      <DependentUpon>frmCadCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Cliente\frmConCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Cliente\frmConCliente.Designer.cs">
+      <DependentUpon>frmConCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Configurações\frmConfiguracoes.cs">
       <SubType>Form</SubType>
@@ -198,6 +211,24 @@
     <Compile Include="Formularios\Configurações\frmNovoNivelAcesso.Designer.cs">
       <DependentUpon>frmNovoNivelAcesso.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Entrega\frmConEntrega.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Entrega\frmConEntrega.Designer.cs">
+      <DependentUpon>frmConEntrega.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Estoque\frmConEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Estoque\frmConEstoque.Designer.cs">
+      <DependentUpon>frmConEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Faturamento\frmConFaturamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Faturamento\frmConFaturamento.Designer.cs">
+      <DependentUpon>frmConFaturamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Login\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,19 +241,46 @@
     <Compile Include="Formularios\Principal\frmPrincipal.Designer.cs">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Produto\frmConProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Produto\frmConProduto.Designer.cs">
+      <DependentUpon>frmConProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Registro\frmRegistro.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Registro\frmRegistro.Designer.cs">
       <DependentUpon>frmRegistro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Venda\frmVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Venda\frmVenda.Designer.cs">
+      <DependentUpon>frmVenda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios\Cliente\frmCadCliente.resx">
+      <DependentUpon>frmCadCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Cliente\frmConCliente.resx">
+      <DependentUpon>frmConCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Configurações\frmConfiguracoes.resx">
       <DependentUpon>frmConfiguracoes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Configurações\frmNovoNivelAcesso.resx">
       <DependentUpon>frmNovoNivelAcesso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Entrega\frmConEntrega.resx">
+      <DependentUpon>frmConEntrega.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Estoque\frmConEstoque.resx">
+      <DependentUpon>frmConEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Faturamento\frmConFaturamento.resx">
+      <DependentUpon>frmConFaturamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Login\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -230,19 +288,20 @@
     <EmbeddedResource Include="Formularios\Principal\frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Produto\frmConProduto.resx">
+      <DependentUpon>frmConProduto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Registro\frmRegistro.resx">
       <DependentUpon>frmRegistro.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Venda\frmVenda.resx">
+      <DependentUpon>frmVenda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="DBYTCCDataSet.xsc">
       <DependentUpon>DBYTCCDataSet.xsd</DependentUpon>
     </None>
@@ -259,6 +318,11 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -269,61 +333,46 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\BtnLOGIN.png" />
+    <None Include="Resources\lupa %281%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\BtnREGISTRO.png" />
+    <None Include="img\BtnLOGIN.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Login.png" />
+    <None Include="img\BtnREGISTRO.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Registro.png" />
+    <None Include="img\Login.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\H.png" />
+    <None Include="img\Registro.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Classes\" />
+    <None Include="Resources\artigos-de-higiene %281%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="img\artigos-de-higiene.png" />
+    <None Include="Resources\casa.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="img\botao-de-inicio.png" />
+    <None Include="Resources\cliente %281%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="img\carrinho-de-compras.png" />
+    <None Include="Resources\configuracoes-cog.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="img\cliente.png" />
+    <None Include="Resources\entrega-rapida %281%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="img\configuracao.png" />
+    <None Include="Resources\fatura %281%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="img\entrega-rapida.png" />
+    <None Include="Resources\produtos.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="img\estoque.png" />
+    <None Include="Resources\sair %281%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="img\fatura.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\new.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\sair.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-adicionar-usuário-masculino-80.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-direitos-de-usuário-100.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-banco-de-dados-100.png" />
+    <None Include="Resources\lupa.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.5.1.0\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.5.1.0\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />

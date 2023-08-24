@@ -18,5 +18,10 @@ namespace DBY___TCC.Formularios.Registro
             this.Hide();
             frmLogin.Show();
         }
+
+        private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

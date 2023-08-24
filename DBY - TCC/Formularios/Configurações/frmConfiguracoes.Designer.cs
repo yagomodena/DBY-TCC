@@ -118,7 +118,6 @@
             // 
             // btnNovoNivelAcesso
             // 
-            this.btnNovoNivelAcesso.Image = global::DBY___TCC.Properties.Resources._new;
             this.btnNovoNivelAcesso.Location = new System.Drawing.Point(12, 13);
             this.btnNovoNivelAcesso.Name = "btnNovoNivelAcesso";
             this.btnNovoNivelAcesso.Size = new System.Drawing.Size(120, 95);
@@ -129,7 +128,6 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::DBY___TCC.Properties.Resources.icons8_direitos_de_usuário_100;
             this.pictureBox2.Location = new System.Drawing.Point(12, 12);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(120, 95);
@@ -139,7 +137,6 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::DBY___TCC.Properties.Resources.icons8_banco_de_dados_100;
             this.pictureBox1.Location = new System.Drawing.Point(19, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(120, 95);
