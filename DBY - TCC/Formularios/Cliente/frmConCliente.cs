@@ -36,8 +36,8 @@ namespace DBY___TCC.Formularios.Cliente
                     btn.FlatAppearance.BorderColor = CorTema.SecondaryColor;
                 }
             }
-            label1.ForeColor = CorTema.SecondaryColor;
-            label2.ForeColor = CorTema.PrimaryColor;
+            //label1.ForeColor = CorTema.SecondaryColor;
+            //label2.ForeColor = CorTema.PrimaryColor;
         }
 
     }

@@ -28,6 +28,7 @@ namespace DBY___TCC.Formularios.Principal
         {
             InitializeComponent();
             random = new Random();
+            btnFecharForm.Visible = false;
         }
 
         private Color SelectThemeColor()
@@ -59,6 +60,7 @@ namespace DBY___TCC.Formularios.Principal
                     panelLogo.BackColor = CorTema.ChangeColorBrightness(color, -0.3);
                     CorTema.PrimaryColor = color;
                     CorTema.SecondaryColor = CorTema.ChangeColorBrightness(color, -0.3); ;
+                    btnFecharForm.Visible = true;
                 }
             }
         }
@@ -131,7 +133,28 @@ namespace DBY___TCC.Formularios.Principal
 
         private void button7_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Formularios.Login.frmLogin(), sender);
+            this.Close();
+            frmLogin login = new frmLogin();
+            login.Show();
+        }
+
+        private void btnFecharForm_Click(object sender, EventArgs e)
+        {
+            if(activeForm != null)
+            {
+                activeForm.Close();
+                Reset();
+            }
+        }
+
+        private void Reset()
+        {
+            DisableButton();
+            lblTitle.Text = "INICIO";
+            panelTitleBar.BackColor = Color.FromArgb(160, 113, 255);
+            panelLogo.BackColor = Color.FromArgb(39, 39, 58);
+            currentButton = null;
+            btnFecharForm.Visible = false;
         }
     }
 }
