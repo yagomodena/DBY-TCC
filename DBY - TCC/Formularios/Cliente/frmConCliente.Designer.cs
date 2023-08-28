@@ -145,6 +145,7 @@
             this.button7.TabIndex = 17;
             this.button7.Text = "Cadastrar Cliente";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // frmConCliente
             // 

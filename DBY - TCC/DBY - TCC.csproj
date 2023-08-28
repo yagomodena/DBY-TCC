@@ -181,6 +181,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Clientes.cs" />
+    <Compile Include="Classes\ConnectionHelper.cs" />
     <Compile Include="Classes\CorTema.cs" />
     <Compile Include="DBYTCCDataSet.Designer.cs">
       <AutoGen>True</AutoGen>

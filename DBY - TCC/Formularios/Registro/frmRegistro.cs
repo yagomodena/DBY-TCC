@@ -1,4 +1,5 @@
-﻿using DBY___TCC.Formularios.Login;
+﻿using DBY___TCC.Classes;
+using DBY___TCC.Formularios.Login;
 using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -7,8 +8,6 @@ namespace DBY___TCC.Formularios.Registro
 {
     public partial class frmRegistro : Form
     {
-
-        string connectionString = @"Data Source=DESKTOP-59265J7\SQLEXPRESS; Initial Catalog=DBYTCC; Integrated Security=true";
 
         public frmRegistro()
         {
@@ -29,8 +28,12 @@ namespace DBY___TCC.Formularios.Registro
             string usuario = txtLogin.Text;
             string senha = txtSenha.Text;
             string confirmaSenha = txtConfirmarSenha.Text;
-
-            if (ChecarUsuario(usuario))
+            if(string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(senha) || string.IsNullOrEmpty(confirmaSenha))
+            {
+                MessageBox.Show("Informe todos os campos!");
+                txtLogin.Select();
+            }
+            else if (ChecarUsuario(usuario))
             {
                 MessageBox.Show("Nome de usuário já existe. Por favor informe outro!");
             }
@@ -41,6 +44,9 @@ namespace DBY___TCC.Formularios.Registro
                     if (RegistrarUsuario(usuario, senha))
                     {
                         MessageBox.Show("Usuário cadastrado com sucesso!");
+                        frmLogin login = new frmLogin();
+                        this.Close();
+                        login.Show();
                     }
                     else
                     {
@@ -50,13 +56,16 @@ namespace DBY___TCC.Formularios.Registro
                 else
                 {
                     MessageBox.Show("As senhas não coincidem");
+                    txtSenha.Text = "";
+                    txtConfirmarSenha.Text = "";
+                    txtSenha.Select();
                 }
             }
         }
 
         private bool ChecarUsuario(string usuario)
         {
-            using (SqlConnection conexao = new SqlConnection(connectionString))
+            using (SqlConnection conexao = new SqlConnection(ConnectionHelper.ConnectionString))
             {
                 conexao.Open();
                 string query = "SELECT COUNT(*) FROM tbUsuarios WHERE USUARIO = @Usuario";
@@ -70,7 +79,7 @@ namespace DBY___TCC.Formularios.Registro
 
         private bool RegistrarUsuario(string usuario, string senha)
         {
-            using (SqlConnection conexao = new SqlConnection(connectionString))
+            using (SqlConnection conexao = new SqlConnection(ConnectionHelper.ConnectionString))
             {
                 conexao.Open();
                 string query = "INSERT INTO tbUsuarios (USUARIO, SENHA) VALUES (@Usuario, @Senha)";

@@ -66,6 +66,7 @@
             // 
             // btnRegistrar
             // 
+            this.btnRegistrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRegistrar.Image = global::DBY___TCC.Properties.Resources.BtnREGISTRO;
             this.btnRegistrar.Location = new System.Drawing.Point(706, 398);
             this.btnRegistrar.Name = "btnRegistrar";
