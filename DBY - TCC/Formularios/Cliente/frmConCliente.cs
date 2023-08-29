@@ -42,7 +42,7 @@ namespace DBY___TCC.Formularios.Cliente
 
         private void button7_Click(object sender, EventArgs e)
         {
-            frmCadCliente cadastroCliente = new frmCadCliente();
+            frmCadCliente cadastroCliente = new frmCadCliente(ConnectionHelper.ConnectionString);
             cadastroCliente.Show();
         }
     }
