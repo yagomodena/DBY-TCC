@@ -1,4 +1,5 @@
 ﻿using DBY___TCC.Classes;
+using DBY___TCC.Formularios.Cliente;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,6 +36,12 @@ namespace DBY___TCC.Formularios.Produto
                     btn.FlatAppearance.BorderColor = CorTema.SecondaryColor;
                 }
             }
+        }
+
+        private void btnCadastroProduto_Click(object sender, EventArgs e)
+        {
+            frmCadProduto cadastroProduto = new frmCadProduto(ConnectionHelper.ConnectionString);
+            cadastroProduto.Show();
         }
     }
 }

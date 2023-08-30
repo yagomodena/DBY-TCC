@@ -203,6 +203,16 @@ namespace DBY___TCC.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap publicar {
+            get {
+                object obj = ResourceManager.GetObject("publicar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Registro {
             get {
                 object obj = ResourceManager.GetObject("Registro", resourceCulture);

@@ -31,7 +31,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnCadastroProduto = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -87,21 +87,22 @@
             this.button6.Text = "Editar Produto";
             this.button6.UseVisualStyleBackColor = false;
             // 
-            // button7
+            // btnCadastroProduto
             // 
-            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button7.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(710, 396);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(210, 44);
-            this.button7.TabIndex = 25;
-            this.button7.Text = "Cadastrar Cliente";
-            this.button7.UseVisualStyleBackColor = false;
+            this.btnCadastroProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCadastroProduto.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnCadastroProduto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCadastroProduto.FlatAppearance.BorderSize = 0;
+            this.btnCadastroProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCadastroProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCadastroProduto.ForeColor = System.Drawing.Color.White;
+            this.btnCadastroProduto.Location = new System.Drawing.Point(710, 396);
+            this.btnCadastroProduto.Name = "btnCadastroProduto";
+            this.btnCadastroProduto.Size = new System.Drawing.Size(210, 44);
+            this.btnCadastroProduto.TabIndex = 25;
+            this.btnCadastroProduto.Text = "Cadastrar Produto";
+            this.btnCadastroProduto.UseVisualStyleBackColor = false;
+            this.btnCadastroProduto.Click += new System.EventHandler(this.btnCadastroProduto_Click);
             // 
             // label2
             // 
@@ -154,7 +155,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.button7);
+            this.Controls.Add(this.btnCadastroProduto);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
@@ -173,7 +174,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnCadastroProduto;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;

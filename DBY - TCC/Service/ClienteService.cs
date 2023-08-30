@@ -14,10 +14,11 @@ namespace DBY___TCC.Service
             _context = new ClienteContext(connectionString);
         }
 
-        public bool CadastrarCliente(Clientes cliente)
+        public bool CadastrarCliente(Clientes cliente, Endereco endereco)
         {
             try
             {
+                cliente.Endereco = endereco;
                 _context.Clientes.Add(cliente);
                 _context.SaveChanges();
                 return true;

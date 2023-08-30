@@ -1,7 +1,9 @@
 ﻿using DBY___TCC.Classes;
 using DBY___TCC.Service;
+using Newtonsoft.Json;
 using System;
 using System.Data.SqlClient;
+using System.Net;
 using System.Windows.Forms;
 
 namespace DBY___TCC.Formularios.Cliente
@@ -9,11 +11,13 @@ namespace DBY___TCC.Formularios.Cliente
     public partial class frmCadCliente : Form
     {
         private readonly ClienteService _clienteService;
+        private readonly CepService _cepService = new CepService();
 
         public frmCadCliente(string connectionString)
         {
             InitializeComponent();
             _clienteService = new ClienteService(connectionString);
+            txtCEP.KeyDown += txtCEP_KeyDown;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -33,14 +37,6 @@ namespace DBY___TCC.Formularios.Cliente
                 TelefoneResidencial = mskTelRel.Text,
                 TelefoneCelular = mskTelCel.Text,
                 Email = txtEmail.Text,
-                CEP = txtCEP.Text,
-                Rua = txtRua.Text,
-                Numero = txtNumero.Text,
-                Complemento = txtComplemento.Text,
-                Bairro = txtBairro.Text,
-                Referencia = txtReferencia.Text,
-                Cidade = txtCidade.Text,
-                UF = "SP", /*cmbUF.SelectedItem.ToString(),*/
                 Situacao = "Ativo",
                 SaldoPontos = 0,
                 DataCadastro = DateTime.Now,
@@ -48,59 +44,71 @@ namespace DBY___TCC.Formularios.Cliente
                 DataUltimaCompra = DateTime.Now
             };
 
-            if (_clienteService.CadastrarCliente(cliente))
+            Endereco endereco = new Endereco()
+            {
+                Rua = txtRua.Text,
+                Bairro = txtBairro.Text,
+                CEP = txtCEP.Text,
+                Cidade = txtCidade.Text,
+                Complemento = txtComplemento.Text,
+                Numero = txtNumero.Text,
+                Referencia = txtReferencia.Text,
+                UF = txtEstado.Text
+            };
+
+            if (_clienteService.CadastrarCliente(cliente, endereco))
             {
                 MessageBox.Show("Cadastro de cliente realizado com sucesso!");
+                this.Close();
             }
             else
             {
                 MessageBox.Show("Erro ao cadastrar o cliente!");
             }
+        }        
 
-            //using (SqlConnection Conexao = new SqlConnection(ConnectionHelper.ConnectionString))
-            //{
-            //    Conexao.Open();
-            //    string query = @"INSERT INTO tbClientes (Nome, CPF, ClienteFidelidade, DataNascimento, Sexo, TelefoneResidencial, TelefoneCelular, Email, CEP, Rua, Numero, Complemento, Bairro, Referencia, Cidade, UF, Situacao, SaldoPontos, DataCadastro, DataAtualizacao, DataUltimaCompra)
-            //                     VALUES(@Nome, @CPF, @ClienteFidelidade, @DataNascimento, @Sexo, @TelRes, @TelCel, @Email, @CEP, @Rua, @Numero, @Complemento, @Bairro, @Referencia, @Cidade, @UF, @Situacao, @SaldoPontos, @DataCadastro, @DataAtualizacao, DataUltimaCompra)";
+        private void LimparCamposEndereco()
+        {
+            txtRua.Clear();
+            txtBairro.Clear();
+            txtCidade.Clear();
+            txtEstado.Clear();
+        }
 
-            //    using (SqlCommand cmd = new SqlCommand(query, Conexao))
-            //    {
-            //        cmd.Parameters.AddWithValue("@Nome", cliente.Nome);
-            //        cmd.Parameters.AddWithValue("@CPF", cliente.CPF);
-            //        cmd.Parameters.AddWithValue("@ClienteFidelidade", cliente.ClienteFidelidade);
-            //        cmd.Parameters.AddWithValue("@DataNascimento", cliente.DataNascimento);
-            //        cmd.Parameters.AddWithValue("@Sexo", cliente.Sexo);
-            //        cmd.Parameters.AddWithValue("@TelRes", cliente.TelefoneResidencial);
-            //        cmd.Parameters.AddWithValue("@TelCel", cliente.TelefoneCelular);
-            //        cmd.Parameters.AddWithValue("@Email", cliente.Email);
-            //        cmd.Parameters.AddWithValue("@CEP", cliente.CEP);
-            //        cmd.Parameters.AddWithValue("@Rua", cliente.Rua);
-            //        cmd.Parameters.AddWithValue("@Numero", cliente.Numero);
-            //        cmd.Parameters.AddWithValue("@Complemento", cliente.Complemento);
-            //        cmd.Parameters.AddWithValue("@Bairro", cliente.Bairro);
-            //        cmd.Parameters.AddWithValue("@Referencia", cliente.Referencia);
-            //        cmd.Parameters.AddWithValue("@Cidade", cliente.Cidade);
-            //        cmd.Parameters.AddWithValue("@UF", cliente.UF);
-            //        cmd.Parameters.AddWithValue("@Situacao", cliente.Situacao);
-            //        cmd.Parameters.AddWithValue("@SaldoPontos", cliente.SaldoPontos);
-            //        cmd.Parameters.AddWithValue("@DataCadastro", cliente.DataCadastro);
-            //        cmd.Parameters.AddWithValue("@DataAtualizacao", cliente.DataUltimaAtualizacao);
-            //        cmd.Parameters.AddWithValue("@DataUltimaCompra", cliente.DataUltimaCompra);
+        private async void txtCEP_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
 
-            //        int rowsAffected = cmd.ExecuteNonQuery();
+                string cep = txtCEP.Text.Replace("-", "");
 
-            //        if(rowsAffected > 0)
-            //        {
-            //            MessageBox.Show("Cadastro de cliente realizado com sucesso!");
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("Erro ao cadastrar o cliente.");
-            //        }
-            //    }
-            //}
+                if (cep.Length >= 1)
+                {
+                    try
+                    {
+                        string responseJson = await _cepService.ConsultarCepAsync(cep);
+                        var cepResponse = JsonConvert.DeserializeObject<Endereco>(responseJson);
 
-
+                        if (cepResponse != null)
+                        {
+                            txtRua.Text = cepResponse.Rua;
+                            txtBairro.Text = cepResponse.Bairro;
+                            txtCidade.Text = cepResponse.Cidade;
+                            txtEstado.Text = cepResponse.UF;
+                        }
+                        else
+                        {
+                            LimparCamposEndereco();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        LimparCamposEndereco();
+                        MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }
