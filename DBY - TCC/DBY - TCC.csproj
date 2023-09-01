@@ -195,6 +195,7 @@
     <Compile Include="Classes\Categoria.cs" />
     <Compile Include="Classes\Endereco.cs" />
     <Compile Include="Classes\Marca.cs" />
+    <Compile Include="Classes\Produto.cs" />
     <Compile Include="Classes\Usuario.cs" />
     <Compile Include="DAL\CategoriaContext.cs" />
     <Compile Include="DAL\ClienteContext.cs" />
