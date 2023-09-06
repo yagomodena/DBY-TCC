@@ -121,6 +121,7 @@ namespace DBY___TCC.Service
             SqlDataAdapter adp = new SqlDataAdapter(cmd);
             DataTable tbl = new DataTable();
             adp.Fill(tbl);
+            dgv.DataSource = tbl;
             conexao.Close();
         }
     }

@@ -9,11 +9,8 @@ namespace DBY___TCC.Classes
 {
     public  class Clientes
     {
-        [Key]
-        public int ID { get; set; }
         public string Nome { get; set; }
         public string CPF { get; set; }
-        public string ClienteFidelidade { get; set; }
         public DateTime DataNascimento { get; set; }
         public string Sexo { get; set; }
         public string TelefoneResidencial { get; set; }
@@ -27,5 +24,24 @@ namespace DBY___TCC.Classes
         public string UF { get; set; }
         public string Referencia { get; set; }
         public string Numero { get; set; }
+
+        public Clientes(string nome, string cPF, DateTime dataNascimento, string sexo, string telefoneResidencial, string telefoneCelular, string email, string cEP, string rua, string bairro, string complemento, string cidade, string uF, string referencia, string numero)
+        {
+            Nome = nome;
+            CPF = cPF;
+            DataNascimento = dataNascimento;
+            Sexo = sexo;
+            TelefoneResidencial = telefoneResidencial;
+            TelefoneCelular = telefoneCelular;
+            Email = email;
+            CEP = cEP;
+            Rua = rua;
+            Bairro = bairro;
+            Complemento = complemento;
+            Cidade = cidade;
+            UF = uF;
+            Referencia = referencia;
+            Numero = numero;
+        }
     }
 }

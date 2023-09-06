@@ -10,10 +10,10 @@ namespace DBY___TCC.Formularios.Cliente
     {
         private readonly frmConCliente _conCliente;
 
-        public frmCadCliente(frmConCliente _conCliente)
+        public frmCadCliente(frmConCliente conCliente)
         {
             InitializeComponent();
-            _conCliente = _conCliente;
+            _conCliente = conCliente;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -48,29 +48,48 @@ namespace DBY___TCC.Formularios.Cliente
             {
                 MessageBox.Show("Já existe um cliente com este CPF!");
             }
-            else
+            else if (btnCadastrar.Text == "Cadastrar")
             {
-                Clientes cliente = new Clientes()
-                {
-                    Nome = txtNome.Text,
-                    CPF = mskCPF.Text,
-                    DataNascimento = dataNascimentoPiker.Value,
-                    Sexo = cmbSexo.SelectedItem.ToString(),
-                    TelefoneResidencial = mskTelRel.Text,
-                    TelefoneCelular = mskTelCel.Text,
-                    Email = txtEmail.Text,
-                    Rua = txtRua.Text,
-                    Bairro = txtBairro.Text,
-                    CEP = txtCEP.Text,
-                    Cidade = txtCidade.Text,
-                    Complemento = txtComplemento.Text,
-                    Numero = txtNumero.Text,
-                    Referencia = txtReferencia.Text,
-                    UF = txtEstado.Text
-                };
+                Clientes cliente = new Clientes(txtNome.Text.Trim(),
+                    mskCPF.Text.Trim(),
+                    DateTime.Parse(dataNascimentoPiker.Text.Trim()),
+                    cmbSexo.Text.Trim(),
+                    mskTelRel.Text.Trim(),
+                    mskTelCel.Text.Trim(),
+                    txtEmail.Text.Trim(),
+                    txtCEP.Text.Trim(),
+                    txtRua.Text.Trim(),
+                    txtBairro.Text.Trim(),
+                    txtComplemento.Text.Trim(),
+                    txtCidade.Text.Trim(),
+                    txtEstado.Text.Trim(),
+                    txtNumero.Text.Trim(),
+                    txtReferencia.Text.Trim());
 
                 DBCliente.CadastrarClientes(cliente);
+
                 LimparCampos();
+                //Clientes cliente = new Clientes()
+                //{
+                //    Nome = txtNome.Text,
+                //    CPF = mskCPF.Text,
+                //    DataNascimento = dataNascimentoPiker.Value,
+                //    Sexo = cmbSexo.SelectedItem.ToString(),
+                //    TelefoneResidencial = mskTelRel.Text,
+                //    TelefoneCelular = mskTelCel.Text,
+                //    Email = txtEmail.Text,
+                //    Rua = txtRua.Text,
+                //    Bairro = txtBairro.Text,
+                //    CEP = txtCEP.Text,
+                //    Cidade = txtCidade.Text,
+                //    Complemento = txtComplemento.Text,
+                //    Numero = txtNumero.Text,
+                //    Referencia = txtReferencia.Text,
+                //    UF = txtEstado.Text
+                //};
+
+                //DBCliente.CadastrarClientes(cliente);
+                //LimparCampos();
 
                 //using (SqlConnection Conexao = new SqlConnection(ConnectionHelper.ConnectionString))
                 //{
@@ -110,7 +129,9 @@ namespace DBY___TCC.Formularios.Cliente
                 //    }
                 //}
             }
+            _conCliente.Mostrar();
         }
+
 
         private bool ChecarCPF(string CPF)
         {
