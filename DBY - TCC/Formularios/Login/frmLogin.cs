@@ -50,10 +50,9 @@ namespace DBY___TCC.Formularios.Login
             }
         }
 
-        private void btnNovoUsuario_Click(object sender, EventArgs e)
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
             frmRegistro registro = new frmRegistro();
-            this.Hide();
             registro.Show();
         }
     }

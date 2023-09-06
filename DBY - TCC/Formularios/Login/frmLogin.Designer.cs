@@ -31,12 +31,12 @@
             this.txtLogin = new System.Windows.Forms.TextBox();
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.lbClose = new System.Windows.Forms.Label();
-            this.btnNovoUsuario = new System.Windows.Forms.PictureBox();
             this.btnEntrar = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.btnNovoUsuario)).BeginInit();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnEntrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // txtLogin
@@ -70,19 +70,6 @@
             this.lbClose.Text = "X";
             this.lbClose.Click += new System.EventHandler(this.lbClose_Click);
             // 
-            // btnNovoUsuario
-            // 
-            this.btnNovoUsuario.BackColor = System.Drawing.Color.White;
-            this.btnNovoUsuario.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNovoUsuario.Image = global::DBY___TCC.Properties.Resources.icons8_adicionar_usuário_masculino_80;
-            this.btnNovoUsuario.Location = new System.Drawing.Point(1005, 455);
-            this.btnNovoUsuario.Name = "btnNovoUsuario";
-            this.btnNovoUsuario.Size = new System.Drawing.Size(78, 79);
-            this.btnNovoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btnNovoUsuario.TabIndex = 5;
-            this.btnNovoUsuario.TabStop = false;
-            this.btnNovoUsuario.Click += new System.EventHandler(this.btnNovoUsuario_Click);
-            // 
             // btnEntrar
             // 
             this.btnEntrar.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -106,12 +93,24 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox2.Image = global::DBY___TCC.Properties.Resources.BtnLOGIN;
+            this.pictureBox2.Location = new System.Drawing.Point(829, 475);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(254, 71);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1095, 546);
-            this.Controls.Add(this.btnNovoUsuario);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.lbClose);
             this.Controls.Add(this.btnEntrar);
             this.Controls.Add(this.txtSenha);
@@ -121,9 +120,9 @@
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.btnNovoUsuario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEntrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,6 +135,6 @@
         private System.Windows.Forms.TextBox txtSenha;
         private System.Windows.Forms.PictureBox btnEntrar;
         private System.Windows.Forms.Label lbClose;
-        private System.Windows.Forms.PictureBox btnNovoUsuario;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

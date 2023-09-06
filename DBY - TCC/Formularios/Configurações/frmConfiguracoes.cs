@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DBY___TCC.Formularios.Registro;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,6 +27,12 @@ namespace DBY___TCC.Formularios.Configurações
         {
             frmNovoNivelAcesso novoNivel = new frmNovoNivelAcesso();
             novoNivel.Show();
+        }
+
+        private void pnlNovoNivelAcesso_Paint(object sender, PaintEventArgs e)
+        {
+            frmRegistro registro = new frmRegistro();
+            registro.Show();
         }
     }
 }

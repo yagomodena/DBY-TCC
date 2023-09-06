@@ -8,6 +8,6 @@ namespace DBY___TCC.Classes
 {
     public static class ConnectionHelper
     {
-        public static string ConnectionString { get; } = @"Data Source=DESKTOP-59265J7\SQLEXPRESS; Initial Catalog=DBYTCC; Integrated Security=true";
+        public static string ConnectionString { get; } = @"Data Source=DESKTOP-59265J7\SQLEXPRESS; Initial Catalog=BMRevendedor; Integrated Security=true";
     }
 }
