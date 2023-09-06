@@ -49,6 +49,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtEstado = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.txtComplemento = new System.Windows.Forms.TextBox();
@@ -65,7 +66,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtCEP = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtEstado = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -92,9 +92,9 @@
             this.btnLimparDados.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLimparDados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimparDados.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimparDados.Location = new System.Drawing.Point(601, 491);
+            this.btnLimparDados.Location = new System.Drawing.Point(550, 491);
             this.btnLimparDados.Name = "btnLimparDados";
-            this.btnLimparDados.Size = new System.Drawing.Size(124, 50);
+            this.btnLimparDados.Size = new System.Drawing.Size(175, 50);
             this.btnLimparDados.TabIndex = 1;
             this.btnLimparDados.Text = "Limpar campos";
             this.btnLimparDados.UseVisualStyleBackColor = false;
@@ -181,11 +181,12 @@
             // 
             // dataNascimentoPiker
             // 
+            this.dataNascimentoPiker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dataNascimentoPiker.Location = new System.Drawing.Point(427, 117);
             this.dataNascimentoPiker.Name = "dataNascimentoPiker";
-            this.dataNascimentoPiker.Size = new System.Drawing.Size(108, 26);
+            this.dataNascimentoPiker.Size = new System.Drawing.Size(128, 26);
             this.dataNascimentoPiker.TabIndex = 22;
-            this.dataNascimentoPiker.Value = new System.DateTime(2023, 8, 27, 0, 0, 0, 0);
+            this.dataNascimentoPiker.Value = new System.DateTime(2023, 9, 6, 0, 0, 0, 0);
             // 
             // txtEmail
             // 
@@ -201,9 +202,9 @@
             this.cmbSexo.Items.AddRange(new object[] {
             "Masculino",
             "Feminino"});
-            this.cmbSexo.Location = new System.Drawing.Point(548, 115);
+            this.cmbSexo.Location = new System.Drawing.Point(572, 115);
             this.cmbSexo.Name = "cmbSexo";
-            this.cmbSexo.Size = new System.Drawing.Size(133, 28);
+            this.cmbSexo.Size = new System.Drawing.Size(109, 28);
             this.cmbSexo.TabIndex = 21;
             // 
             // label3
@@ -236,7 +237,7 @@
             // 
             // mskTelRel
             // 
-            this.mskTelRel.Location = new System.Drawing.Point(697, 117);
+            this.mskTelRel.Location = new System.Drawing.Point(697, 115);
             this.mskTelRel.Mask = "(00) 0000-0000";
             this.mskTelRel.Name = "mskTelRel";
             this.mskTelRel.Size = new System.Drawing.Size(138, 26);
@@ -284,7 +285,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(544, 92);
+            this.label5.Location = new System.Drawing.Point(568, 92);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(46, 20);
             this.label5.TabIndex = 7;
@@ -315,6 +316,14 @@
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Endereço";
+            // 
+            // txtEstado
+            // 
+            this.txtEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEstado.Location = new System.Drawing.Point(714, 117);
+            this.txtEstado.Name = "txtEstado";
+            this.txtEstado.Size = new System.Drawing.Size(121, 26);
+            this.txtEstado.TabIndex = 22;
             // 
             // label17
             // 
@@ -460,14 +469,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(894, 78);
             this.panel2.TabIndex = 13;
-            // 
-            // txtEstado
-            // 
-            this.txtEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEstado.Location = new System.Drawing.Point(714, 117);
-            this.txtEstado.Name = "txtEstado";
-            this.txtEstado.Size = new System.Drawing.Size(121, 26);
-            this.txtEstado.TabIndex = 22;
             // 
             // frmCadCliente
             // 
