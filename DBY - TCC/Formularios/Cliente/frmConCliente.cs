@@ -27,11 +27,11 @@ namespace DBY___TCC.Formularios.Cliente
             //this.clientesTableAdapter.Fill(this.dBYTCCDataSet1.Clientes);
             LoadTheme();
 
-            var obterClienteService = new ObterClienteService(ConnectionHelper.ConnectionString);
+            //var obterClienteService = new ObterClienteService(ConnectionHelper.ConnectionString);
 
-            List<Clientes> clientes = obterClienteService.ObterClientes();
+            //List<Clientes> clientes = obterClienteService.ObterClientes();
 
-            dataGridView.DataSource = clientes;
+            //dataGridView.DataSource = clientes;
         }
 
         private void LoadTheme()

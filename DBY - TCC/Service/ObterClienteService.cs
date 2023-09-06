@@ -17,9 +17,9 @@ namespace DBY___TCC.Service
             _context = new ClienteContext(connectionString);
         }
 
-        public List<Clientes> ObterClientes()
-        {
-            return _context.Clientes.ToList();
-        }
+        //public List<Clientes> ObterClientes()
+        //{
+        //    return _context.Clientes.ToList();
+        //}
     }
 }

@@ -37,9 +37,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.dBYTCCDataSet1 = new DBY___TCC.DBYTCCDataSet1();
             this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.clientesTableAdapter = new DBY___TCC.DBYTCCDataSet1TableAdapters.ClientesTableAdapter();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cPFDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,7 +61,6 @@
             this.dataUltimaAtualizacaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataCadastroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dBYTCCDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -200,20 +197,9 @@
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // dBYTCCDataSet1
-            // 
-            this.dBYTCCDataSet1.DataSetName = "DBYTCCDataSet1";
-            this.dBYTCCDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // clientesBindingSource
             // 
             this.clientesBindingSource.DataMember = "Clientes";
-            this.clientesBindingSource.DataSource = this.dBYTCCDataSet1;
-            // 
-            // clientesTableAdapter
-            // 
-            this.clientesTableAdapter.ClearBeforeFill = true;
-            // 
             // iDDataGridViewTextBoxColumn
             // 
             this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
@@ -409,7 +395,6 @@
             this.Text = "Consulta de Clientes";
             this.Load += new System.EventHandler(this.frmConCliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dBYTCCDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -426,9 +411,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
-        private DBYTCCDataSet1 dBYTCCDataSet1;
         private System.Windows.Forms.BindingSource clientesBindingSource;
-        private DBYTCCDataSet1TableAdapters.ClientesTableAdapter clientesTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cPFDataGridViewTextBoxColumn;
