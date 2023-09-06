@@ -63,7 +63,7 @@ namespace DBY___TCC.Formularios.Cliente
 
         private void button7_Click(object sender, EventArgs e)
         {
-            frmCadCliente cadastroCliente = new frmCadCliente(ConnectionHelper.ConnectionString);
+            frmCadCliente cadastroCliente = new frmCadCliente(this);
             cadastroCliente.Show();
         }
 
@@ -86,7 +86,7 @@ namespace DBY___TCC.Formularios.Cliente
             dataGridView.Columns[13].HeaderText = "Referencia";
             dataGridView.Columns[14].HeaderText = "Cidade";
             dataGridView.Columns[15].HeaderText = "UF";
-            
+
             //Tamanho das colunas
             dataGridView.Columns[0].Width = 50;
             dataGridView.Columns[1].Width = 250;
