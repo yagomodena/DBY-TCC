@@ -23,7 +23,6 @@ namespace DBY___TCC.Formularios.Cliente
             {
                 Nome = txtNome.Text,
                 CPF = mskCPF.Text,
-                ClienteFidelidade = cmbFidelidade.SelectedItem.ToString(),
                 DataNascimento = dataNascimentoPiker.Value,
                 Sexo = cmbSexo.SelectedItem.ToString(),
                 TelefoneResidencial = mskTelRel.Text,
@@ -36,16 +35,14 @@ namespace DBY___TCC.Formularios.Cliente
                 Bairro = txtBairro.Text,
                 Referencia = txtReferencia.Text,
                 Cidade = txtCidade.Text,
-                UF = cmbUF.SelectedItem.ToString(),
-                Situacao = "Ativo",
-                SaldoPontos = 0
+                UF = txtEstado.Text
             };
 
             using (SqlConnection Conexao = new SqlConnection(ConnectionHelper.ConnectionString))
             {
                 Conexao.Open();
-                string query = @"INSERT INTO tbClientes (Nome, CPF, ClienteFidelidade, DataNascimento, Sexo, TelefoneResidencial, TelefoneCelular, Email, CEP, Rua, Numero, Complemento, Bairro, Referencia, Cidade, UF, Situacao, SaldoPontos, DataCadastro, DataAtualizacao, DataUltimaCompra)
-                                 VALUES(@Nome, @CPF, @ClienteFidelidade, @DataNascimento, @Sexo, @TelRes, @TelCel, @Email, @CEP, @Rua, @Numero, @Complemento, @Bairro, @Referencia, @Cidade, @UF, @Situacao, @SaldoPontos, @DataCadastro, @DataAtualizacao, DataUltimaCompra)";
+                string query = @"INSERT INTO tbClientes (Nome, CPF, DataNascimento, Sexo, TelefoneResidencial, TelefoneCelular, Email, CEP, Rua, Numero, Complemento, Bairro, Referencia, Cidade, UF)
+                                 VALUES(@Nome, @CPF, @DataNascimento, @Sexo, @TelRes, @TelCel, @Email, @CEP, @Rua, @Numero, @Complemento, @Bairro, @Referencia, @Cidade, @UF)";
 
                 using (SqlCommand cmd = new SqlCommand(query, Conexao))
                 {
@@ -65,11 +62,6 @@ namespace DBY___TCC.Formularios.Cliente
                     cmd.Parameters.AddWithValue("@Referencia", cliente.Referencia);
                     cmd.Parameters.AddWithValue("@Cidade", cliente.Cidade);
                     cmd.Parameters.AddWithValue("@UF", cliente.UF);
-                    cmd.Parameters.AddWithValue("@Situacao", cliente.Situacao);
-                    cmd.Parameters.AddWithValue("@SaldoPontos", cliente.SaldoPontos);
-                    cmd.Parameters.AddWithValue("@DataCadastro", cliente.DataCadastro);
-                    cmd.Parameters.AddWithValue("@DataAtualizacao", cliente.DataUltimaAtualizacao);
-                    cmd.Parameters.AddWithValue("@DataUltimaCompra", cliente.DataUltimaCompra);
 
                     int rowsAffected = cmd.ExecuteNonQuery();
 
