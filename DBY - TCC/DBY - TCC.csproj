@@ -202,11 +202,6 @@
     <Compile Include="Classes\Clientes.cs" />
     <Compile Include="Classes\ConnectionHelper.cs" />
     <Compile Include="Classes\CorTema.cs" />
-    <Compile Include="DBYTCCDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBYTCCDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Formularios\Cliente\frmCadCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -301,6 +296,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\CepService.cs" />
     <Compile Include="Service\ClienteService.cs" />
+    <Compile Include="Service\ObterClienteService.cs" />
     <EmbeddedResource Include="Formularios\Cliente\frmCadCliente.resx">
       <DependentUpon>frmCadCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -351,17 +347,6 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="DBYTCCDataSet.xsc">
-      <DependentUpon>DBYTCCDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="DBYTCCDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DBYTCCDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DBYTCCDataSet.xss">
-      <DependentUpon>DBYTCCDataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

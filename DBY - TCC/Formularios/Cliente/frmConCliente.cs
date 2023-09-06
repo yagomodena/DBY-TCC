@@ -1,4 +1,6 @@
 ﻿using DBY___TCC.Classes;
+using DBY___TCC.DAL;
+using DBY___TCC.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,7 +23,15 @@ namespace DBY___TCC.Formularios.Cliente
 
         private void frmConCliente_Load(object sender, EventArgs e)
         {
+            // TODO: esta linha de código carrega dados na tabela 'dBYTCCDataSet1.Clientes'. Você pode movê-la ou removê-la conforme necessário.
+            //this.clientesTableAdapter.Fill(this.dBYTCCDataSet1.Clientes);
             LoadTheme();
+
+            var obterClienteService = new ObterClienteService(ConnectionHelper.ConnectionString);
+
+            List<Clientes> clientes = obterClienteService.ObterClientes();
+
+            dataGridView.DataSource = clientes;
         }
 
         private void LoadTheme()

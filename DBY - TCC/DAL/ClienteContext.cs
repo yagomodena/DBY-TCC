@@ -10,6 +10,8 @@ namespace DBY___TCC.DAL
 {
     public class ClienteContext : DbContext
     {
+        public ClienteContext() : base(ConnectionHelper.ConnectionString){ }
+
         public DbSet<Clientes> Clientes { get; set; }
 
         public ClienteContext(string connectionString) : base(connectionString) { }
