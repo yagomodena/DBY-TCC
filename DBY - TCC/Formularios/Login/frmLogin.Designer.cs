@@ -96,10 +96,10 @@
             // pictureBox2
             // 
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Image = global::DBY___TCC.Properties.Resources.BtnLOGIN;
-            this.pictureBox2.Location = new System.Drawing.Point(829, 475);
+            this.pictureBox2.Image = global::DBY___TCC.Properties.Resources.icons8_adicionar_usuário_masculino_80;
+            this.pictureBox2.Location = new System.Drawing.Point(1021, 475);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(254, 71);
+            this.pictureBox2.Size = new System.Drawing.Size(62, 59);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;

@@ -2,6 +2,7 @@
 using DBY___TCC.DAL;
 using DBY___TCC.Formularios.Login;
 using System;
+using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
@@ -10,13 +11,13 @@ namespace DBY___TCC.Formularios.Registro
 {
     public partial class frmRegistro : Form
     {
-        private readonly UsuarioContext _context;
+        //private readonly UsuarioContext _context;
 
         public frmRegistro()
         {
             InitializeComponent();
             txtLogin.Select();
-            _context = new UsuarioContext();
+            //_context = new UsuarioContext();
         }
 
         private void lbClose_Click(object sender, EventArgs e)
@@ -62,8 +63,21 @@ namespace DBY___TCC.Formularios.Registro
             };
 
             _context.tbUsuarios.Add(novoUsuario);
-            
-            _context.SaveChanges();
+
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (var validationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Console.WriteLine($"Property: {validationError.PropertyName}, Error: {validationError.ErrorMessage}");
+                    }
+                }
+            }
 
             MessageBox.Show("Usuário registrado com sucesso!");
 
