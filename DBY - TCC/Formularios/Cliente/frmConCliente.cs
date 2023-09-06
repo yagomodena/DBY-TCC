@@ -1,6 +1,4 @@
 ﻿using DBY___TCC.Classes;
-using DBY___TCC.DAL;
-using DBY___TCC.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

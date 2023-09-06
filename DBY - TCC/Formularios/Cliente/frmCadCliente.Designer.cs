@@ -42,8 +42,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.mskTelCel = new System.Windows.Forms.MaskedTextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.cmbFidelidade = new System.Windows.Forms.ComboBox();
             this.mskTelRel = new System.Windows.Forms.MaskedTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -68,20 +66,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtCEP = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label22 = new System.Windows.Forms.Label();
-            this.txtDataUltimaCompra = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.txtDataAtualizacao = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.txtDataCadastro = new System.Windows.Forms.TextBox();
-            this.txtSaldoPontos = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.txtSituacao = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCadastrar
@@ -176,8 +163,6 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.mskTelCel);
-            this.groupBox1.Controls.Add(this.label15);
-            this.groupBox1.Controls.Add(this.cmbFidelidade);
             this.groupBox1.Controls.Add(this.mskTelRel);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
@@ -200,7 +185,7 @@
             this.dataNascimentoPiker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dataNascimentoPiker.Location = new System.Drawing.Point(427, 117);
             this.dataNascimentoPiker.Name = "dataNascimentoPiker";
-            this.dataNascimentoPiker.Size = new System.Drawing.Size(108, 26);
+            this.dataNascimentoPiker.Size = new System.Drawing.Size(128, 26);
             this.dataNascimentoPiker.TabIndex = 22;
             this.dataNascimentoPiker.Value = new System.DateTime(2023, 8, 27, 0, 0, 0, 0);
             // 
@@ -218,9 +203,9 @@
             this.cmbSexo.Items.AddRange(new object[] {
             "Masculino",
             "Feminino"});
-            this.cmbSexo.Location = new System.Drawing.Point(548, 115);
+            this.cmbSexo.Location = new System.Drawing.Point(571, 115);
             this.cmbSexo.Name = "cmbSexo";
-            this.cmbSexo.Size = new System.Drawing.Size(133, 28);
+            this.cmbSexo.Size = new System.Drawing.Size(110, 28);
             this.cmbSexo.TabIndex = 21;
             // 
             // label3
@@ -250,27 +235,6 @@
             this.mskTelCel.Name = "mskTelCel";
             this.mskTelCel.Size = new System.Drawing.Size(144, 26);
             this.mskTelCel.TabIndex = 18;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(170, 30);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(142, 20);
-            this.label15.TabIndex = 15;
-            this.label15.Text = "Cliente Fidelidade";
-            // 
-            // cmbFidelidade
-            // 
-            this.cmbFidelidade.FormattingEnabled = true;
-            this.cmbFidelidade.Items.AddRange(new object[] {
-            "Sim",
-            "Não"});
-            this.cmbFidelidade.Location = new System.Drawing.Point(174, 53);
-            this.cmbFidelidade.Name = "cmbFidelidade";
-            this.cmbFidelidade.Size = new System.Drawing.Size(138, 28);
-            this.cmbFidelidade.TabIndex = 14;
             // 
             // mskTelRel
             // 
@@ -322,7 +286,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(544, 92);
+            this.label5.Location = new System.Drawing.Point(567, 92);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(46, 20);
             this.label5.TabIndex = 7;
@@ -497,127 +461,15 @@
             this.txtCEP.Name = "txtCEP";
             this.txtCEP.Size = new System.Drawing.Size(138, 26);
             this.txtCEP.TabIndex = 6;
-            this.txtCEP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCEP_KeyDown);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.panel2.Controls.Add(this.label22);
-            this.panel2.Controls.Add(this.txtDataUltimaCompra);
-            this.panel2.Controls.Add(this.label21);
-            this.panel2.Controls.Add(this.txtDataAtualizacao);
-            this.panel2.Controls.Add(this.label20);
-            this.panel2.Controls.Add(this.txtDataCadastro);
-            this.panel2.Controls.Add(this.txtSaldoPontos);
-            this.panel2.Controls.Add(this.label19);
-            this.panel2.Controls.Add(this.txtSituacao);
-            this.panel2.Controls.Add(this.label18);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 564);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(894, 78);
             this.panel2.TabIndex = 13;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label22.Location = new System.Drawing.Point(570, 11);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(136, 20);
-            this.label22.TabIndex = 30;
-            this.label22.Text = "Data últ. Compra";
-            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtDataUltimaCompra
-            // 
-            this.txtDataUltimaCompra.Enabled = false;
-            this.txtDataUltimaCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDataUltimaCompra.Location = new System.Drawing.Point(574, 34);
-            this.txtDataUltimaCompra.Name = "txtDataUltimaCompra";
-            this.txtDataUltimaCompra.Size = new System.Drawing.Size(132, 26);
-            this.txtDataUltimaCompra.TabIndex = 29;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label21.Location = new System.Drawing.Point(421, 11);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(137, 20);
-            this.label21.TabIndex = 28;
-            this.label21.Text = "Data Atualização";
-            // 
-            // txtDataAtualizacao
-            // 
-            this.txtDataAtualizacao.Enabled = false;
-            this.txtDataAtualizacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDataAtualizacao.Location = new System.Drawing.Point(425, 34);
-            this.txtDataAtualizacao.Name = "txtDataAtualizacao";
-            this.txtDataAtualizacao.Size = new System.Drawing.Size(133, 26);
-            this.txtDataAtualizacao.TabIndex = 27;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label20.Location = new System.Drawing.Point(278, 11);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(118, 20);
-            this.label20.TabIndex = 26;
-            this.label20.Text = "Data Cadastro";
-            // 
-            // txtDataCadastro
-            // 
-            this.txtDataCadastro.Enabled = false;
-            this.txtDataCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDataCadastro.Location = new System.Drawing.Point(282, 34);
-            this.txtDataCadastro.Name = "txtDataCadastro";
-            this.txtDataCadastro.Size = new System.Drawing.Size(127, 26);
-            this.txtDataCadastro.TabIndex = 25;
-            // 
-            // txtSaldoPontos
-            // 
-            this.txtSaldoPontos.Enabled = false;
-            this.txtSaldoPontos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSaldoPontos.Location = new System.Drawing.Point(139, 34);
-            this.txtSaldoPontos.Name = "txtSaldoPontos";
-            this.txtSaldoPontos.Size = new System.Drawing.Size(127, 26);
-            this.txtSaldoPontos.TabIndex = 24;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label19.Location = new System.Drawing.Point(135, 11);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(131, 20);
-            this.label19.TabIndex = 23;
-            this.label19.Text = "Saldo de Pontos";
-            // 
-            // txtSituacao
-            // 
-            this.txtSituacao.Enabled = false;
-            this.txtSituacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSituacao.Location = new System.Drawing.Point(23, 34);
-            this.txtSituacao.Name = "txtSituacao";
-            this.txtSituacao.Size = new System.Drawing.Size(100, 26);
-            this.txtSituacao.TabIndex = 22;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label18.Location = new System.Drawing.Point(19, 11);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(74, 20);
-            this.label18.TabIndex = 22;
-            this.label18.Text = "Situação";
             // 
             // frmCadCliente
             // 
@@ -640,8 +492,6 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -678,23 +528,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.MaskedTextBox mskTelCel;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox cmbFidelidade;
         private System.Windows.Forms.ComboBox cmbSexo;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtComplemento;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox txtDataUltimaCompra;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox txtDataAtualizacao;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox txtDataCadastro;
-        private System.Windows.Forms.TextBox txtSaldoPontos;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox txtSituacao;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.DateTimePicker dataNascimentoPiker;
         private System.Windows.Forms.TextBox txtEstado;
         private System.Windows.Forms.TextBox txtCidade;

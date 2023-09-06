@@ -19,11 +19,13 @@ namespace DBY___TCC.Classes
         public string TelefoneResidencial { get; set; }
         public string TelefoneCelular { get; set; }
         public string Email { get; set; }
-        public Endereco Endereco { get; set; }
-        public string Situacao { get; set; }
-        public int SaldoPontos { get; set; }
-        public DateTime DataUltimaCompra { get; set; }
-        public DateTime DataUltimaAtualizacao { get; set; } = DateTime.Now;
-        public DateTime DataCadastro { get; set; } = DateTime.Now;
+        public string CEP { get; set; }
+        public string Rua { get; set; }
+        public string Bairro { get; set; }
+        public string Complemento { get; set; }
+        public string Cidade { get; set; }
+        public string UF { get; set; }
+        public string Referencia { get; set; }
+        public string Numero { get; set; }
     }
 }
