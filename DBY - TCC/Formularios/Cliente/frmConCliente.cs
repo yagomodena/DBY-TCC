@@ -12,11 +12,15 @@ namespace DBY___TCC.Formularios.Cliente
 {
     public partial class frmConCliente : Form
     {
+
+        frmCadCliente form;
+
         public frmConCliente()
         {
             InitializeComponent();
             LoadTheme();
-            DBCliente.MostrarClientes("SELECT * FROM Clientes", dataGridView);
+            //DBCliente.MostrarClientes("SELECT * FROM Clientes", dataGridView);
+            form = new frmCadCliente(this);
         }
 
         public void Mostrar()
@@ -71,8 +75,8 @@ namespace DBY___TCC.Formularios.Cliente
 
         private void button7_Click(object sender, EventArgs e)
         {
-            frmCadCliente cadastroCliente = new frmCadCliente(this);
-            cadastroCliente.Show();
+            form.LimparCampos();
+            form.ShowDialog();
         }
 
         //public void configuraDataGridView()
@@ -130,6 +134,25 @@ namespace DBY___TCC.Formularios.Cliente
         {
             if(e.ColumnIndex == 0)
             {
+                form.LimparCampos();
+                form.id = dataGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
+                form.nome = dataGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
+                form.CPF = dataGridView.Rows[e.RowIndex].Cells[4].Value.ToString();
+                form.DataNascimento = dataGridView.Rows[e.RowIndex].Cells[5].Value.ToString();
+                form.Sexo = dataGridView.Rows[e.RowIndex].Cells[6].Value.ToString();
+                form.TelefoneResidencial = dataGridView.Rows[e.RowIndex].Cells[7].Value.ToString();
+                form.TelefoneCelular = dataGridView.Rows[e.RowIndex].Cells[8].Value.ToString();
+                form.Email = dataGridView.Rows[e.RowIndex].Cells[9].Value.ToString();
+                form.CEP = dataGridView.Rows[e.RowIndex].Cells[10].Value.ToString();
+                form.Rua = dataGridView.Rows[e.RowIndex].Cells[11].Value.ToString();
+                form.Numero = dataGridView.Rows[e.RowIndex].Cells[12].Value.ToString();
+                form.Complemento = dataGridView.Rows[e.RowIndex].Cells[13].Value.ToString();
+                form.Bairro = dataGridView.Rows[e.RowIndex].Cells[14].Value.ToString();
+                form.Referencia = dataGridView.Rows[e.RowIndex].Cells[15].Value.ToString();
+                form.Cidade = dataGridView.Rows[e.RowIndex].Cells[16].Value.ToString();
+                form.UF = dataGridView.Rows[e.RowIndex].Cells[17].Value.ToString();
+                form.EditarCliente();
+                form.ShowDialog();
                 return;
             }
             if(e.ColumnIndex == 1)

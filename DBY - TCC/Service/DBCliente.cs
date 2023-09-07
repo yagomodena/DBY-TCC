@@ -120,6 +120,8 @@ namespace DBY___TCC.Service
             SqlCommand cmd = new SqlCommand(sql, conexao);
             SqlDataAdapter adp = new SqlDataAdapter(cmd);
             DataTable tbl = new DataTable();
+
+
             adp.Fill(tbl);
             dgv.DataSource = tbl;
             conexao.Close();
