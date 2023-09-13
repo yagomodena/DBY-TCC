@@ -12,7 +12,7 @@ namespace DBY___TCC.Service
 {
     public class DBMarca
     {
-        public static void CadastrarMarca(Marca marca)
+        public static void CadastrarMarca(Marcas marca)
         {
             SqlConnection conexao = new SqlConnection(ConnectionHelper.ConnectionString);
             conexao.Open();
@@ -35,7 +35,7 @@ namespace DBY___TCC.Service
             conexao.Close();
         }
 
-        public static void EditarMarca(Marca marca)
+        public static void EditarMarca(Marcas marca)
         {
             SqlConnection conexao = new SqlConnection(ConnectionHelper.ConnectionString);
             conexao.Open();

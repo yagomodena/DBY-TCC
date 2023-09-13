@@ -3,14 +3,12 @@ using System.Collections.Generic;
 
 namespace DBY___TCC.Classes
 {
-    public class Marca
+    public class Marcas
     {
-        public int Id { get; set; }
         public string Nome { get; set; }
 
-        public Marca(int id, string nome)
+        public Marcas(string nome)
         {
-            Id = id;
             Nome = nome;
         }
     }

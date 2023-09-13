@@ -196,7 +196,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Categoria.cs" />
-    <Compile Include="Classes\Marca.cs" />
+    <Compile Include="Classes\Marcas.cs" />
     <Compile Include="Classes\Produto.cs" />
     <Compile Include="Classes\Usuario.cs" />
     <Compile Include="Classes\Clientes.cs" />
@@ -280,6 +280,12 @@
     <Compile Include="Formularios\Produto\Marca\frmCadMarca.Designer.cs">
       <DependentUpon>frmCadMarca.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Produto\Marca\frmConMarcas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Produto\Marca\frmConMarcas.Designer.cs">
+      <DependentUpon>frmConMarcas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Registro\frmRegistro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -334,6 +340,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Produto\Marca\frmCadMarca.resx">
       <DependentUpon>frmCadMarca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Produto\Marca\frmConMarcas.resx">
+      <DependentUpon>frmConMarcas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Registro\frmRegistro.resx">
       <DependentUpon>frmRegistro.cs</DependentUpon>

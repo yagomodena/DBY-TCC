@@ -49,25 +49,6 @@ namespace DBY___TCC.Formularios.Cliente
         {
             string CPF = mskCPF.Text;
 
-            //Clientes cliente = new Clientes()
-            //{
-            //    Nome = txtNome.Text,
-            //    CPF = mskCPF.Text,
-            //    DataNascimento = dataNascimentoPiker.Value,
-            //    Sexo = cmbSexo.SelectedItem.ToString(),
-            //    TelefoneResidencial = mskTelRel.Text,
-            //    TelefoneCelular = mskTelCel.Text,
-            //    Email = txtEmail.Text,
-            //    Rua = txtRua.Text,
-            //    Bairro = txtBairro.Text,
-            //    CEP = txtCEP.Text,
-            //    Cidade = txtCidade.Text,
-            //    Complemento = txtComplemento.Text,
-            //    Numero = txtNumero.Text,
-            //    Referencia = txtReferencia.Text,
-            //    UF = txtEstado.Text
-            //};
-
             if (ChecarCPF(CPF))
             {
                 MessageBox.Show("Já existe um cliente com este CPF!");

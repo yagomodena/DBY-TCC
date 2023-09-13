@@ -37,9 +37,6 @@
             this.btnLimparCampos = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnNovaCategoria = new System.Windows.Forms.Button();
-            this.btnPesquisarCategoria = new System.Windows.Forms.Button();
-            this.btnNovaMarca = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbMarca = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -48,11 +45,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtPrecoCusto = new System.Windows.Forms.TextBox();
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
-            this.btnPesquisarMarcas = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.txtCodBarras = new System.Windows.Forms.TextBox();
             this.txtProdutoID = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.btnNovaCategoria = new System.Windows.Forms.Button();
+            this.btnPesquisarCategoria = new System.Windows.Forms.Button();
+            this.btnNovaMarca = new System.Windows.Forms.Button();
+            this.btnPesquisarMarcas = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -61,9 +61,9 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 386);
+            this.panel2.Location = new System.Drawing.Point(0, 407);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(767, 78);
+            this.panel2.Size = new System.Drawing.Size(867, 78);
             this.panel2.TabIndex = 19;
             // 
             // panel1
@@ -74,7 +74,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(767, 63);
+            this.panel1.Size = new System.Drawing.Size(867, 63);
             this.panel1.TabIndex = 16;
             // 
             // label1
@@ -96,7 +96,7 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.Red;
-            this.button3.Location = new System.Drawing.Point(713, 0);
+            this.button3.Location = new System.Drawing.Point(813, 0);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(54, 63);
             this.button3.TabIndex = 2;
@@ -128,7 +128,7 @@
             this.btnLimparCampos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLimparCampos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimparCampos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimparCampos.Location = new System.Drawing.Point(405, 320);
+            this.btnLimparCampos.Location = new System.Drawing.Point(538, 334);
             this.btnLimparCampos.Name = "btnLimparCampos";
             this.btnLimparCampos.Size = new System.Drawing.Size(177, 50);
             this.btnLimparCampos.TabIndex = 15;
@@ -142,7 +142,7 @@
             this.btnCadastrar.FlatAppearance.BorderSize = 0;
             this.btnCadastrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCadastrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCadastrar.Location = new System.Drawing.Point(603, 320);
+            this.btnCadastrar.Location = new System.Drawing.Point(731, 334);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(124, 50);
             this.btnCadastrar.TabIndex = 14;
@@ -172,50 +172,10 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(23, 74);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(721, 225);
+            this.groupBox1.Size = new System.Drawing.Size(832, 244);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informações do Produto";
-            // 
-            // btnNovaCategoria
-            // 
-            this.btnNovaCategoria.FlatAppearance.BorderSize = 0;
-            this.btnNovaCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNovaCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNovaCategoria.Image = global::DBY___TCC.Properties.Resources.publicar;
-            this.btnNovaCategoria.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnNovaCategoria.Location = new System.Drawing.Point(441, 179);
-            this.btnNovaCategoria.Name = "btnNovaCategoria";
-            this.btnNovaCategoria.Size = new System.Drawing.Size(35, 30);
-            this.btnNovaCategoria.TabIndex = 40;
-            this.btnNovaCategoria.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNovaCategoria.UseVisualStyleBackColor = true;
-            this.btnNovaCategoria.Click += new System.EventHandler(this.btnNovaCategoria_Click);
-            // 
-            // btnPesquisarCategoria
-            // 
-            this.btnPesquisarCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisarCategoria.Image = global::DBY___TCC.Properties.Resources.lupa__1_;
-            this.btnPesquisarCategoria.Location = new System.Drawing.Point(482, 181);
-            this.btnPesquisarCategoria.Name = "btnPesquisarCategoria";
-            this.btnPesquisarCategoria.Size = new System.Drawing.Size(31, 30);
-            this.btnPesquisarCategoria.TabIndex = 39;
-            this.btnPesquisarCategoria.UseVisualStyleBackColor = true;
-            // 
-            // btnNovaMarca
-            // 
-            this.btnNovaMarca.FlatAppearance.BorderSize = 0;
-            this.btnNovaMarca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNovaMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNovaMarca.Image = global::DBY___TCC.Properties.Resources.publicar;
-            this.btnNovaMarca.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnNovaMarca.Location = new System.Drawing.Point(185, 177);
-            this.btnNovaMarca.Name = "btnNovaMarca";
-            this.btnNovaMarca.Size = new System.Drawing.Size(35, 30);
-            this.btnNovaMarca.TabIndex = 38;
-            this.btnNovaMarca.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNovaMarca.UseVisualStyleBackColor = true;
-            this.btnNovaMarca.Click += new System.EventHandler(this.btnNovaMarca_Click);
             // 
             // label3
             // 
@@ -257,7 +217,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(272, 160);
+            this.label6.Location = new System.Drawing.Point(279, 157);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(81, 20);
             this.label6.TabIndex = 35;
@@ -284,20 +244,10 @@
             // cmbCategoria
             // 
             this.cmbCategoria.FormattingEnabled = true;
-            this.cmbCategoria.Location = new System.Drawing.Point(276, 182);
+            this.cmbCategoria.Location = new System.Drawing.Point(283, 179);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(159, 28);
             this.cmbCategoria.TabIndex = 34;
-            // 
-            // btnPesquisarMarcas
-            // 
-            this.btnPesquisarMarcas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisarMarcas.Image = global::DBY___TCC.Properties.Resources.lupa__1_;
-            this.btnPesquisarMarcas.Location = new System.Drawing.Point(226, 179);
-            this.btnPesquisarMarcas.Name = "btnPesquisarMarcas";
-            this.btnPesquisarMarcas.Size = new System.Drawing.Size(31, 30);
-            this.btnPesquisarMarcas.TabIndex = 33;
-            this.btnPesquisarMarcas.UseVisualStyleBackColor = true;
             // 
             // label15
             // 
@@ -336,11 +286,62 @@
             this.label8.TabIndex = 10;
             this.label8.Text = "ID";
             // 
+            // btnNovaCategoria
+            // 
+            this.btnNovaCategoria.FlatAppearance.BorderSize = 0;
+            this.btnNovaCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNovaCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNovaCategoria.Image = global::DBY___TCC.Properties.Resources.publicar;
+            this.btnNovaCategoria.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnNovaCategoria.Location = new System.Drawing.Point(448, 177);
+            this.btnNovaCategoria.Name = "btnNovaCategoria";
+            this.btnNovaCategoria.Size = new System.Drawing.Size(42, 43);
+            this.btnNovaCategoria.TabIndex = 40;
+            this.btnNovaCategoria.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnNovaCategoria.UseVisualStyleBackColor = true;
+            this.btnNovaCategoria.Click += new System.EventHandler(this.btnNovaCategoria_Click);
+            // 
+            // btnPesquisarCategoria
+            // 
+            this.btnPesquisarCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisarCategoria.Image = global::DBY___TCC.Properties.Resources.lupa__1_;
+            this.btnPesquisarCategoria.Location = new System.Drawing.Point(496, 179);
+            this.btnPesquisarCategoria.Name = "btnPesquisarCategoria";
+            this.btnPesquisarCategoria.Size = new System.Drawing.Size(31, 30);
+            this.btnPesquisarCategoria.TabIndex = 39;
+            this.btnPesquisarCategoria.UseVisualStyleBackColor = true;
+            // 
+            // btnNovaMarca
+            // 
+            this.btnNovaMarca.FlatAppearance.BorderSize = 0;
+            this.btnNovaMarca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNovaMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNovaMarca.Image = global::DBY___TCC.Properties.Resources.publicar;
+            this.btnNovaMarca.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnNovaMarca.Location = new System.Drawing.Point(185, 177);
+            this.btnNovaMarca.Name = "btnNovaMarca";
+            this.btnNovaMarca.Size = new System.Drawing.Size(42, 42);
+            this.btnNovaMarca.TabIndex = 38;
+            this.btnNovaMarca.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnNovaMarca.UseVisualStyleBackColor = true;
+            this.btnNovaMarca.Click += new System.EventHandler(this.btnNovaMarca_Click);
+            // 
+            // btnPesquisarMarcas
+            // 
+            this.btnPesquisarMarcas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisarMarcas.Image = global::DBY___TCC.Properties.Resources.lupa__1_;
+            this.btnPesquisarMarcas.Location = new System.Drawing.Point(233, 179);
+            this.btnPesquisarMarcas.Name = "btnPesquisarMarcas";
+            this.btnPesquisarMarcas.Size = new System.Drawing.Size(31, 30);
+            this.btnPesquisarMarcas.TabIndex = 33;
+            this.btnPesquisarMarcas.UseVisualStyleBackColor = true;
+            this.btnPesquisarMarcas.Click += new System.EventHandler(this.btnPesquisarMarcas_Click);
+            // 
             // frmCadProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(767, 464);
+            this.ClientSize = new System.Drawing.Size(867, 485);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnLimparCampos);

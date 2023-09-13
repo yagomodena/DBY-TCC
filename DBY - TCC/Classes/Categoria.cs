@@ -10,6 +10,6 @@ namespace DBY___TCC.Classes
         public DateTime DataCadastro { get; set; } = DateTime.Now;
         public DateTime DataAtualizacao { get;set; } = DateTime.Now;
         public int MarcaId { get; set; }
-        public virtual Marca Marca { get; set; }
+        public virtual Marcas Marca { get; set; }
     }
 }
