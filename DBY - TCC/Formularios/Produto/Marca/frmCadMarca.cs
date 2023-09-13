@@ -21,5 +21,10 @@ namespace DBY___TCC.Formularios.Produto.Marca
         {
             this.Close();
         }
+
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
