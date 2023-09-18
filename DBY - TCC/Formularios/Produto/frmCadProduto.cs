@@ -1,10 +1,12 @@
-﻿using DBY___TCC.Formularios.Cliente;
+﻿using DBY___TCC.Classes;
+using DBY___TCC.Formularios.Cliente;
 using DBY___TCC.Formularios.Produto.Categoria;
 using DBY___TCC.Formularios.Produto.Marca;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,13 +18,9 @@ namespace DBY___TCC.Formularios.Produto
     public partial class frmCadProduto : Form
     {
 
-        frmConMarcas form;
-
         public frmCadProduto(string connectionString)
         {
             InitializeComponent();
-            form = new frmConMarcas(this);
-
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -39,12 +37,26 @@ namespace DBY___TCC.Formularios.Produto
         private void btnNovaCategoria_Click(object sender, EventArgs e)
         {
             frmCadCategoria cadastroCategoria = new frmCadCategoria();
-            cadastroCategoria.Show();
+            cadastroCategoria.ShowDialog();
         }
 
-        private void btnPesquisarMarcas_Click(object sender, EventArgs e)
+        private void frmCadProduto_Load(object sender, EventArgs e)
         {
-            form.ShowDialog();
+            string consulta = "SELECT Nome FROM Marcas";
+
+            using (SqlConnection conexao = new SqlConnection(ConnectionHelper.ConnectionString))
+            {
+                conexao.Open();
+                SqlCommand cmd = new SqlCommand(consulta, conexao);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string nome = reader["Nome"].ToString();
+                    cmbMarca.Items.Add(nome);
+                }
+                conexao.Close();
+            }
         }
     }
 }

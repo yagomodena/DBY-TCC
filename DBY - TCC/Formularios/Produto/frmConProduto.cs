@@ -1,5 +1,6 @@
 ﻿using DBY___TCC.Classes;
 using DBY___TCC.Formularios.Cliente;
+using DBY___TCC.Formularios.Produto.Marca;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,8 @@ namespace DBY___TCC.Formularios.Produto
 {
     public partial class frmConProduto : Form
     {
+
+        frmConMarcas form;
         public frmConProduto()
         {
             InitializeComponent();
@@ -42,6 +45,11 @@ namespace DBY___TCC.Formularios.Produto
         {
             frmCadProduto cadastroProduto = new frmCadProduto(ConnectionHelper.ConnectionString);
             cadastroProduto.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {            
+            form.ShowDialog();
         }
     }
 }

@@ -39,11 +39,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnVenda = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelTitleBar = new System.Windows.Forms.Panel();
+            this.btnFecharForm = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelDesktopPane = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnFecharForm = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -249,6 +249,17 @@
             this.panelLogo.Size = new System.Drawing.Size(250, 80);
             this.panelLogo.TabIndex = 1;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label1.Location = new System.Drawing.Point(27, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(197, 26);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "DBY Revendedor";
+            // 
             // panelTitleBar
             // 
             this.panelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(113)))), ((int)(((byte)(255)))));
@@ -259,6 +270,20 @@
             this.panelTitleBar.Name = "panelTitleBar";
             this.panelTitleBar.Size = new System.Drawing.Size(982, 80);
             this.panelTitleBar.TabIndex = 1;
+            // 
+            // btnFecharForm
+            // 
+            this.btnFecharForm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFecharForm.FlatAppearance.BorderSize = 0;
+            this.btnFecharForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFecharForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFecharForm.Location = new System.Drawing.Point(0, 0);
+            this.btnFecharForm.Name = "btnFecharForm";
+            this.btnFecharForm.Size = new System.Drawing.Size(81, 80);
+            this.btnFecharForm.TabIndex = 1;
+            this.btnFecharForm.Text = "X";
+            this.btnFecharForm.UseVisualStyleBackColor = true;
+            this.btnFecharForm.Click += new System.EventHandler(this.btnFecharForm_Click);
             // 
             // lblTitle
             // 
@@ -280,31 +305,6 @@
             this.panelDesktopPane.Name = "panelDesktopPane";
             this.panelDesktopPane.Size = new System.Drawing.Size(982, 703);
             this.panelDesktopPane.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label1.Location = new System.Drawing.Point(27, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(197, 26);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "DBY Revendedor";
-            // 
-            // btnFecharForm
-            // 
-            this.btnFecharForm.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFecharForm.FlatAppearance.BorderSize = 0;
-            this.btnFecharForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFecharForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFecharForm.Location = new System.Drawing.Point(0, 0);
-            this.btnFecharForm.Name = "btnFecharForm";
-            this.btnFecharForm.Size = new System.Drawing.Size(81, 80);
-            this.btnFecharForm.TabIndex = 1;
-            this.btnFecharForm.Text = "X";
-            this.btnFecharForm.UseVisualStyleBackColor = true;
-            this.btnFecharForm.Click += new System.EventHandler(this.btnFecharForm_Click);
             // 
             // pictureBox1
             // 
