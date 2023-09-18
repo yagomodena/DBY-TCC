@@ -111,5 +111,11 @@ namespace DBY___TCC.Formularios.Cliente
                 return;
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Relatorios.frmRelClientes form = new Relatorios.frmRelClientes();
+            form.Show();
+        }
     }
 }
