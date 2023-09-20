@@ -14,19 +14,21 @@ namespace DBY___TCC.Relatorios
 {
     public partial class frmRelClientes : Form
     {
-        public frmRelClientes()
+
+        DataTable dt = new DataTable();
+
+        public frmRelClientes(DataTable dt)
         {
             InitializeComponent();
+            this.dt = dt;
         }
 
         private void frmRelProdutos_Load(object sender, EventArgs e)
         {
-            
-        }
+            this.reportViewer1.LocalReport.DataSources.Clear();
+            this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", dt));
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            SqlConnection conexao = new SqlConnection(ConnectionHelper.ConnectionString);
+            this.reportViewer1.RefreshReport();
         }
     }
 }

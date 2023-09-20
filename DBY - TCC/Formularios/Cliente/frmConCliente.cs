@@ -1,4 +1,5 @@
 ﻿using DBY___TCC.Classes;
+using DBY___TCC.Relatorios;
 using DBY___TCC.Service;
 using System;
 using System.Data;
@@ -62,8 +63,6 @@ namespace DBY___TCC.Formularios.Cliente
         {
             frmCadCliente cliente = new frmCadCliente(this);
             cliente.Show();
-            //form.LimparCampos();
-            //form.ShowDialog();
         }
 
         private void txtPesquisa_TextChanged_1(object sender, EventArgs e)
@@ -80,7 +79,7 @@ namespace DBY___TCC.Formularios.Cliente
 
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex == 0)
+            if (e.ColumnIndex == 0)
             {
                 form.LimparCampos();
                 form.id = dataGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
@@ -103,9 +102,9 @@ namespace DBY___TCC.Formularios.Cliente
                 form.ShowDialog();
                 return;
             }
-            if(e.ColumnIndex == 1)
+            if (e.ColumnIndex == 1)
             {
-                if(MessageBox.Show("Realmente deseja excluir este cliente?", "Informação", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                if (MessageBox.Show("Realmente deseja excluir este cliente?", "Informação", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
                     DBCliente.DeletarCliente(dataGridView.Rows[e.RowIndex].Cells[2].Value.ToString());
                     Mostrar();
@@ -116,8 +115,32 @@ namespace DBY___TCC.Formularios.Cliente
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Relatorios.frmRelClientes form = new Relatorios.frmRelClientes();
-            form.Show();
+            var dt = GerarDadosRelatorio();
+            using (var frm = new frmRelClientes(dt))
+            {
+                frm.ShowDialog();
+            }
+        }
+
+        private DataTable GerarDadosRelatorio()
+        {
+            var dt  = new DataTable();
+            dt.Columns.Add("Nome");
+            dt.Columns.Add("CPF");
+            dt.Columns.Add("TelefoneCelular");
+            dt.Columns.Add("Email");
+            dt.Columns.Add("Cidade");
+
+            foreach(DataGridViewRow item in dataGridView.Rows)
+            {
+                dt.Rows.Add(item.Cells[3].Value.ToString(),
+                    item.Cells[4].Value.ToString(),
+                    item.Cells[8].Value.ToString(),
+                    item.Cells[9].Value.ToString(),
+                    item.Cells[16].Value.ToString());
+            }
+
+            return dt;
         }
     }
 }
