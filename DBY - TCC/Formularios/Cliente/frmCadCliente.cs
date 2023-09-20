@@ -43,17 +43,13 @@ namespace DBY___TCC.Formularios.Cliente
         {
             this.Close();
         }
-        
+
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             string CPF = mskCPF.Text;
 
-            if (ChecarCPF(CPF))
-            {
-                MessageBox.Show("Já existe um cliente com este CPF!");
-            }
-            else if (btnCadastrar.Text == "Cadastrar")
+            if (btnCadastrar.Text == "Cadastrar")
             {
                 Clientes cliente = new Clientes(txtNome.Text.Trim(),
                     mskCPF.Text.Trim(),
@@ -71,9 +67,16 @@ namespace DBY___TCC.Formularios.Cliente
                     txtNumero.Text.Trim(),
                     txtReferencia.Text.Trim());
 
-                DBCliente.CadastrarClientes(cliente);
+                if (ChecarCPF(CPF))
+                {
+                    MessageBox.Show("Já existe um cliente com este CPF!");
+                }
+                else
+                {
+                    DBCliente.CadastrarClientes(cliente);
+                }
 
-                LimparCampos();                
+                LimparCampos();
             }
             else if (btnCadastrar.Text == "Atualizar")
             {
@@ -95,7 +98,7 @@ namespace DBY___TCC.Formularios.Cliente
 
                 DBCliente.EditarClientes(cliente, id);
 
-                LimparCampos();
+                this.Close();
             }
             _conCliente.Mostrar();
         }
@@ -109,7 +112,8 @@ namespace DBY___TCC.Formularios.Cliente
                 string query = "SELECT COUNT(*) FROM Clientes WHERE CPF = @Cpf";
                 SqlCommand cmd = new SqlCommand(query, conexao);
 
-                cmd.Parameters.AddWithValue("@Cpf", mskCPF.Text);
+                cmd.Parameters.AddWithValue("@Cpf", CPF);
+
                 int count = (int)cmd.ExecuteScalar();
                 return count > 0;
             }

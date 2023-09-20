@@ -56,10 +56,12 @@ namespace DBY___TCC.Service
             SqlConnection conexao = new SqlConnection(ConnectionHelper.ConnectionString);
             conexao.Open();
 
-            string query = @"UPDATE Clientes SET Nome = @Nome, CPF = @CPF, DataNascimento = @DataNascimento, Sexo = @Sexo, TelefoneResidencial = @TelRes, TelefoneCelular = @TelCel, Email = @Email, CEP = @CEP, Rua = @Rua, Numero = @Numero, Complemento = @Complemento, Bairro = @Bairro, Referencia = @Referencia, Cidade = @Cidade, UF = @UF";
+            string query = @"UPDATE Clientes SET Nome = @Nome, CPF = @CPF, DataNascimento = @DataNascimento, Sexo = @Sexo, TelefoneResidencial = @TelRes, TelefoneCelular = @TelCel, Email = @Email, CEP = @CEP, Rua = @Rua, Numero = @Numero, Complemento = @Complemento, Bairro = @Bairro, Referencia = @Referencia, Cidade = @Cidade, UF = @UF 
+                             WHERE ID = @ID";
 
             SqlCommand cmd = new SqlCommand(query, conexao);
             cmd.CommandType = System.Data.CommandType.Text;
+            cmd.Parameters.Add("@ID", System.Data.SqlDbType.VarChar).Value = id;
             cmd.Parameters.Add("@Nome", System.Data.SqlDbType.VarChar).Value = cliente.Nome;
             cmd.Parameters.Add("@CPF", System.Data.SqlDbType.VarChar).Value = cliente.CPF;
             cmd.Parameters.Add("@DataNascimento", System.Data.SqlDbType.VarChar).Value = cliente.DataNascimento;

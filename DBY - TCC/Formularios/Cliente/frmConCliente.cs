@@ -60,8 +60,10 @@ namespace DBY___TCC.Formularios.Cliente
 
         private void button7_Click(object sender, EventArgs e)
         {
-            form.LimparCampos();
-            form.ShowDialog();
+            frmCadCliente cliente = new frmCadCliente(this);
+            cliente.Show();
+            //form.LimparCampos();
+            //form.ShowDialog();
         }
 
         private void txtPesquisa_TextChanged_1(object sender, EventArgs e)
@@ -103,7 +105,7 @@ namespace DBY___TCC.Formularios.Cliente
             }
             if(e.ColumnIndex == 1)
             {
-                if(MessageBox.Show("Realmente deseja excluir este cliente?", "Informação", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information) == DialogResult.Yes)
+                if(MessageBox.Show("Realmente deseja excluir este cliente?", "Informação", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
                     DBCliente.DeletarCliente(dataGridView.Rows[e.RowIndex].Cells[2].Value.ToString());
                     Mostrar();
