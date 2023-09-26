@@ -20,18 +20,6 @@ namespace DBY___TCC.Formularios.Produto
             this.Close();
         }
 
-        private void btnNovaMarca_Click(object sender, EventArgs e)
-        {
-            frmCadMarca frmMarca = new frmCadMarca();
-            frmMarca.ShowDialog();
-        }
-
-        private void btnNovaCategoria_Click(object sender, EventArgs e)
-        {
-            frmCadCategoria cadastroCategoria = new frmCadCategoria();
-            cadastroCategoria.ShowDialog();
-        }
-
         private void frmCadProduto_Load(object sender, EventArgs e)
         {
             string consulta = "SELECT Nome FROM Marcas";

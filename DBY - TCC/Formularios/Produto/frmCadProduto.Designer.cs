@@ -37,8 +37,6 @@
             this.btnLimparCampos = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnNovaCategoria = new System.Windows.Forms.Button();
-            this.btnNovaMarca = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbMarca = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -149,8 +147,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnNovaCategoria);
-            this.groupBox1.Controls.Add(this.btnNovaMarca);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.cmbMarca);
             this.groupBox1.Controls.Add(this.label5);
@@ -172,36 +168,6 @@
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informações do Produto";
-            // 
-            // btnNovaCategoria
-            // 
-            this.btnNovaCategoria.FlatAppearance.BorderSize = 0;
-            this.btnNovaCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNovaCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNovaCategoria.Image = global::DBY___TCC.Properties.Resources.publicar;
-            this.btnNovaCategoria.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnNovaCategoria.Location = new System.Drawing.Point(398, 177);
-            this.btnNovaCategoria.Name = "btnNovaCategoria";
-            this.btnNovaCategoria.Size = new System.Drawing.Size(42, 43);
-            this.btnNovaCategoria.TabIndex = 40;
-            this.btnNovaCategoria.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNovaCategoria.UseVisualStyleBackColor = true;
-            this.btnNovaCategoria.Click += new System.EventHandler(this.btnNovaCategoria_Click);
-            // 
-            // btnNovaMarca
-            // 
-            this.btnNovaMarca.FlatAppearance.BorderSize = 0;
-            this.btnNovaMarca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNovaMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNovaMarca.Image = global::DBY___TCC.Properties.Resources.publicar;
-            this.btnNovaMarca.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnNovaMarca.Location = new System.Drawing.Point(185, 177);
-            this.btnNovaMarca.Name = "btnNovaMarca";
-            this.btnNovaMarca.Size = new System.Drawing.Size(42, 42);
-            this.btnNovaMarca.TabIndex = 38;
-            this.btnNovaMarca.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNovaMarca.UseVisualStyleBackColor = true;
-            this.btnNovaMarca.Click += new System.EventHandler(this.btnNovaMarca_Click);
             // 
             // label3
             // 
@@ -355,9 +321,7 @@
         private System.Windows.Forms.TextBox txtPrecoVenda;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtPrecoCusto;
-        private System.Windows.Forms.Button btnNovaMarca;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmbCategoria;
-        private System.Windows.Forms.Button btnNovaCategoria;
     }
 }
