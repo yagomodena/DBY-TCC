@@ -1,22 +1,13 @@
 ﻿using DBY___TCC.Classes;
-using DBY___TCC.Formularios.Cliente;
 using DBY___TCC.Formularios.Produto.Marca;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DBY___TCC.Formularios.Produto
 {
     public partial class frmConProduto : Form
     {
-
-        frmConMarcas form;
         public frmConProduto()
         {
             InitializeComponent();
@@ -47,9 +38,12 @@ namespace DBY___TCC.Formularios.Produto
             cadastroProduto.Show();
         }
 
+        private readonly frmCadProduto _cadProdutos;
+
         private void button2_Click(object sender, EventArgs e)
-        {            
-            form.ShowDialog();
+        {
+            frmConMarcas frmMarcas = new frmConMarcas();
+            frmMarcas.Show();
         }
     }
 }
