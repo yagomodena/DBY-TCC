@@ -4,10 +4,8 @@ using DBY___TCC.Service;
 using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Data.SqlTypes;
 using System.Drawing;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace DBY___TCC.Formularios.Cliente
 {
@@ -32,7 +30,7 @@ namespace DBY___TCC.Formularios.Cliente
         {
             LoadTheme();
             SqlConnection conexao = new SqlConnection(ConnectionHelper.ConnectionString);
-            DBCliente.MostrarClientes("SELECT * FROM Clientes", dataGridView);
+            Mostrar();
 
             try
             {

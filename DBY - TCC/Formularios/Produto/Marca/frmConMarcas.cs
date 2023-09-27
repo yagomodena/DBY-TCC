@@ -1,14 +1,9 @@
 ﻿using DBY___TCC.Classes;
 using DBY___TCC.Service;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DBY___TCC.Formularios.Produto.Marca
@@ -20,6 +15,7 @@ namespace DBY___TCC.Formularios.Produto.Marca
         public frmConMarcas()
         {
             InitializeComponent();
+            LoadTheme();
             //form = new frmCadMarca(this);
         }
 
@@ -28,8 +24,23 @@ namespace DBY___TCC.Formularios.Produto.Marca
             DBMarca.MostrarMarcas("SELECT * FROM Marcas", dgvMarcas);
         }
 
+        private void LoadTheme()
+        {
+            foreach (Control btns in this.Controls)
+            {
+                if (btns.GetType() == typeof(Button))
+                {
+                    Button btn = (Button)btns;
+                    btn.BackColor = CorTema.PrimaryColor;
+                    btn.ForeColor = Color.White;
+                    btn.FlatAppearance.BorderColor = CorTema.SecondaryColor;
+                }
+            }
+        }
+
         private void frmConMarcas_Load(object sender, EventArgs e)
         {
+            LoadTheme();
             SqlConnection conexao = new SqlConnection(ConnectionHelper.ConnectionString);
             Mostrar();
 
@@ -53,8 +64,8 @@ namespace DBY___TCC.Formularios.Produto.Marca
         {
             if (e.ColumnIndex == 0)
             {
-                form.ID = dgvMarcas.Rows[e.RowIndex].Cells[2].Value.ToString();
-                form.Nome = dgvMarcas.Rows[e.RowIndex].Cells[3].Value.ToString();
+                form.Id = dgvMarcas.Rows[e.RowIndex].Cells[1].Value.ToString();
+                form.Nome = dgvMarcas.Rows[e.RowIndex].Cells[2].Value.ToString();
                 form.ShowDialog();
                 return;
             }
@@ -67,6 +78,13 @@ namespace DBY___TCC.Formularios.Produto.Marca
                 }
                 return;
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string termoPesquisa = textBox1.Text.Trim();
+
+            ((DataTable)dgvMarcas.DataSource).DefaultView.RowFilter = string.Format("Nome LIKE '%{0}%'", termoPesquisa);
         }
     }
 }

@@ -28,100 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.dgvMarcas = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgvMarcas
-            // 
-            this.dgvMarcas.AllowUserToAddRows = false;
-            this.dgvMarcas.AllowUserToDeleteRows = false;
-            this.dgvMarcas.AllowUserToResizeColumns = false;
-            this.dgvMarcas.AllowUserToResizeRows = false;
-            this.dgvMarcas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvMarcas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dgvMarcas.BackgroundColor = System.Drawing.Color.White;
-            this.dgvMarcas.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvMarcas.ColumnHeadersHeight = 29;
-            this.dgvMarcas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.Nome,
-            this.Column1,
-            this.Column2});
-            this.dgvMarcas.GridColor = System.Drawing.Color.White;
-            this.dgvMarcas.Location = new System.Drawing.Point(12, 116);
-            this.dgvMarcas.MultiSelect = false;
-            this.dgvMarcas.Name = "dgvMarcas";
-            this.dgvMarcas.ReadOnly = true;
-            this.dgvMarcas.RowHeadersWidth = 51;
-            this.dgvMarcas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvMarcas.RowTemplate.Height = 24;
-            this.dgvMarcas.ShowEditingIcon = false;
-            this.dgvMarcas.Size = new System.Drawing.Size(547, 250);
-            this.dgvMarcas.TabIndex = 0;
-            this.dgvMarcas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMarcas_CellClick);
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "ID";
-            this.Id.MinimumWidth = 6;
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Width = 49;
-            // 
-            // Nome
-            // 
-            this.Nome.HeaderText = "Nome";
-            this.Nome.MinimumWidth = 6;
-            this.Nome.Name = "Nome";
-            this.Nome.ReadOnly = true;
-            this.Nome.Width = 73;
-            // 
-            // Column1
-            // 
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(113)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(113)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.White;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle17;
-            this.Column1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Column1.HeaderText = "";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Text = "Editar";
-            this.Column1.UseColumnTextForButtonValue = true;
-            this.Column1.Width = 6;
-            // 
-            // Column2
-            // 
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(88)))), ((int)(((byte)(96)))));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(88)))), ((int)(((byte)(96)))));
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.White;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle18;
-            this.Column2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Column2.HeaderText = "";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Text = "Deletar";
-            this.Column2.UseColumnTextForButtonValue = true;
-            this.Column2.Width = 6;
             // 
             // textBox1
             // 
@@ -130,6 +49,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(542, 26);
             this.textBox1.TabIndex = 1;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -173,16 +93,99 @@
             this.button7.Text = "Cadastrar Marca";
             this.button7.UseVisualStyleBackColor = false;
             // 
+            // dgvMarcas
+            // 
+            this.dgvMarcas.AllowUserToAddRows = false;
+            this.dgvMarcas.AllowUserToDeleteRows = false;
+            this.dgvMarcas.AllowUserToResizeColumns = false;
+            this.dgvMarcas.AllowUserToResizeRows = false;
+            this.dgvMarcas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvMarcas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvMarcas.BackgroundColor = System.Drawing.Color.White;
+            this.dgvMarcas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvMarcas.ColumnHeadersHeight = 29;
+            this.dgvMarcas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.Nome,
+            this.Column1,
+            this.Column2});
+            this.dgvMarcas.GridColor = System.Drawing.Color.White;
+            this.dgvMarcas.Location = new System.Drawing.Point(12, 89);
+            this.dgvMarcas.MultiSelect = false;
+            this.dgvMarcas.Name = "dgvMarcas";
+            this.dgvMarcas.ReadOnly = true;
+            this.dgvMarcas.RowHeadersWidth = 51;
+            this.dgvMarcas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvMarcas.RowTemplate.Height = 24;
+            this.dgvMarcas.ShowEditingIcon = false;
+            this.dgvMarcas.Size = new System.Drawing.Size(547, 250);
+            this.dgvMarcas.TabIndex = 23;
+            this.dgvMarcas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMarcas_CellClick);
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "ID";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 49;
+            // 
+            // Nome
+            // 
+            this.Nome.HeaderText = "Nome";
+            this.Nome.MinimumWidth = 6;
+            this.Nome.Name = "Nome";
+            this.Nome.ReadOnly = true;
+            this.Nome.Width = 73;
+            // 
+            // Column1
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(113)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(113)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Column1.FillWeight = 32.66967F;
+            this.Column1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Column1.HeaderText = "";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Text = "Editar";
+            this.Column1.UseColumnTextForButtonValue = true;
+            this.Column1.Width = 6;
+            // 
+            // Column2
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(88)))), ((int)(((byte)(96)))));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(88)))), ((int)(((byte)(96)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle8;
+            this.Column2.FillWeight = 29.63324F;
+            this.Column2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Column2.HeaderText = "";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Text = "Deletar";
+            this.Column2.UseColumnTextForButtonValue = true;
+            this.Column2.Width = 6;
+            // 
             // frmConMarcas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(571, 428);
+            this.Controls.Add(this.dgvMarcas);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.dgvMarcas);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "frmConMarcas";
@@ -197,12 +200,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvMarcas;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.DataGridView dgvMarcas;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
         private System.Windows.Forms.DataGridViewButtonColumn Column1;

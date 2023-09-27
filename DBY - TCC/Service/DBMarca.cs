@@ -35,15 +35,16 @@ namespace DBY___TCC.Service
             conexao.Close();
         }
 
-        public static void EditarMarca(Marcas marca)
+        public static void EditarMarca(Marcas marca, string id)
         {
             SqlConnection conexao = new SqlConnection(ConnectionHelper.ConnectionString);
             conexao.Open();
 
-            string query = @"UPDATE Marcas SET Nome = @Nome";
+            string query = @"UPDATE Marcas SET Nome = @Nome WHERE ID = @ID";
 
             SqlCommand cmd = new SqlCommand(query, conexao);
             cmd.CommandType = System.Data.CommandType.Text;
+            cmd.Parameters.Add("@ID", System.Data.SqlDbType.VarChar).Value = id;
             cmd.Parameters.Add("@Nome", System.Data.SqlDbType.VarChar).Value = marca.Nome;
 
             try
