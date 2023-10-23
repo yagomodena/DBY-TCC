@@ -41,7 +41,6 @@ namespace DBY___TCC.Formularios.Venda
 
                 if (!string.IsNullOrEmpty(nomeDoCliente))
                 {
-                    // Preencha o TextBox com o nome do cliente encontrado
                     txtNomeCliente.Text = nomeDoCliente;
                 }
                 else
