@@ -43,6 +43,8 @@ namespace DBY___TCC.Formularios.Registro
             else if (ChecarUsuario(login))
             {
                 MessageBox.Show("Nome de usuário já existe. Por favor informe outro!");
+                txtLogin.Text = "";
+                txtLogin.Focus();
             }
             else
             {
