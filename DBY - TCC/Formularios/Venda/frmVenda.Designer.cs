@@ -57,6 +57,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.chcEntregarPedido = new System.Windows.Forms.CheckBox();
+            this.btnCalcularTotalPago = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericQuantidadeProdutos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPedido)).BeginInit();
             this.panel1.SuspendLayout();
@@ -91,18 +92,6 @@
             this.btnPesquisarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPesquisarCliente.UseVisualStyleBackColor = true;
             this.btnPesquisarCliente.Click += new System.EventHandler(this.btnPesquisarCliente_Click);
-            // esse de cima
-            //
-            //
-            //
-            //
-            //
-            //
-            ////
-            //
-            //
-            //
-            // 
             // 
             // txtClienteID
             // 
@@ -208,18 +197,6 @@
             this.dataGridViewPedido.Size = new System.Drawing.Size(1333, 204);
             this.dataGridViewPedido.TabIndex = 19;
             this.dataGridViewPedido.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPedido_CellEndEdit);
-            //this.dataGridViewPedido.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPedido_CellValueChanged);
-            // esse de cima
-            //
-            //
-            //
-            //
-            //
-            //
-            ////
-            //
-            //
-            //
             // 
             // btnAdicionarProduto
             // 
@@ -304,6 +281,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.panel1.Controls.Add(this.btnCalcularTotalPago);
             this.panel1.Controls.Add(this.txtTroco);
             this.panel1.Controls.Add(this.txtTotalPago);
             this.panel1.Controls.Add(this.txtTotalReceber);
@@ -320,7 +298,7 @@
             // txtTroco
             // 
             this.txtTroco.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTroco.Location = new System.Drawing.Point(1036, 15);
+            this.txtTroco.Location = new System.Drawing.Point(1110, 15);
             this.txtTroco.Name = "txtTroco";
             this.txtTroco.Size = new System.Drawing.Size(266, 36);
             this.txtTroco.TabIndex = 36;
@@ -330,21 +308,8 @@
             this.txtTotalPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalPago.Location = new System.Drawing.Point(661, 15);
             this.txtTotalPago.Name = "txtTotalPago";
-            this.txtTotalPago.Size = new System.Drawing.Size(266, 36);
+            this.txtTotalPago.Size = new System.Drawing.Size(221, 36);
             this.txtTotalPago.TabIndex = 35;
-            //this.txtTotalPago.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTotalPago_KeyDown);
-            // esse de cima
-            //
-            //
-            //
-            //
-            //
-            //
-            ////
-            //
-            //
-            //
-            // 
             // 
             // txtTotalReceber
             // 
@@ -359,7 +324,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(943, 18);
+            this.label11.Location = new System.Drawing.Point(1027, 18);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(77, 29);
             this.label11.TabIndex = 34;
@@ -397,6 +362,22 @@
             this.chcEntregarPedido.TabIndex = 32;
             this.chcEntregarPedido.Text = "Entregar pedido";
             this.chcEntregarPedido.UseVisualStyleBackColor = true;
+            // 
+            // btnCalcularTotalPago
+            // 
+            this.btnCalcularTotalPago.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnCalcularTotalPago.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCalcularTotalPago.FlatAppearance.BorderSize = 0;
+            this.btnCalcularTotalPago.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCalcularTotalPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCalcularTotalPago.ForeColor = System.Drawing.Color.White;
+            this.btnCalcularTotalPago.Location = new System.Drawing.Point(903, 11);
+            this.btnCalcularTotalPago.Name = "btnCalcularTotalPago";
+            this.btnCalcularTotalPago.Size = new System.Drawing.Size(118, 44);
+            this.btnCalcularTotalPago.TabIndex = 33;
+            this.btnCalcularTotalPago.Text = "Calc. Troco";
+            this.btnCalcularTotalPago.UseVisualStyleBackColor = false;
+            this.btnCalcularTotalPago.Click += new System.EventHandler(this.btnCalcularTotalPago_Click);
             // 
             // frmVenda
             // 
@@ -468,5 +449,6 @@
         private System.Windows.Forms.TextBox txtTotalPago;
         private System.Windows.Forms.TextBox txtTotalReceber;
         private System.Windows.Forms.CheckBox chcEntregarPedido;
+        private System.Windows.Forms.Button btnCalcularTotalPago;
     }
 }

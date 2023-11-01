@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics.Tracing;
 using System.Drawing;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace DBY___TCC.Formularios.Venda
@@ -13,23 +14,17 @@ namespace DBY___TCC.Formularios.Venda
         //Variáveis para rastrear os valores
         private decimal totalAReceber = 0m;
         private decimal totalPago = 0m;
+        private int clienteId;
+        private string nomeDoCliente;
+        int vendaId;
+
 
         public frmVenda()
         {
             InitializeComponent();
             LoadTheme();
 
-            //dataGridViewPedido.Columns.Add("ClienteID", "Cliente ID");
-            //dataGridViewPedido.Columns.Add("NomeDoCliente", "Nome do Cliente");
-            //dataGridViewPedido.Columns.Add("ProdutoID", "Produto ID");
-            //dataGridViewPedido.Columns.Add("NomeDoProduto", "Nome do Produto");
-            //dataGridViewPedido.Columns.Add("Marca", "Marca");
-            //dataGridViewPedido.Columns.Add("Categoria", "Categoria");
-            //dataGridViewPedido.Columns.Add("ValorUnitario", "ValorUnitario");
-            //dataGridViewPedido.Columns.Add("ValorTotal", "ValorTotal");
-            //dataGridViewPedido.Columns.Add("Quantidade", "Quantidade");
             // Adicione as colunas à DataGridView
-
             dataGridViewPedido.Columns.Add("vendaID", "ID da Venda");
             dataGridViewPedido.Columns.Add("ClienteID", "ID do Cliente");
             dataGridViewPedido.Columns.Add("NomeDoCliente", "Nome do Cliente");
@@ -39,14 +34,16 @@ namespace DBY___TCC.Formularios.Venda
             dataGridViewPedido.Columns.Add("CategoriaDoProduto", "Categoria do Produto");
             dataGridViewPedido.Columns.Add("ValorDoProduto", "Valor do Produto");
             dataGridViewPedido.Columns.Add("Quantidade", "Quantidade");
-            // Coluna de entrega como CheckBox
-            DataGridViewCheckBoxColumn entregaColumn = new DataGridViewCheckBoxColumn();
-            entregaColumn.HeaderText = "Entrega";
-            entregaColumn.Name = "Entrega";
-            dataGridViewPedido.Columns.Add(entregaColumn);
+            dataGridViewPedido.Columns.Add("Entrega", "Entrega"); // Coluna de entrega como CheckBox
+
             dataGridViewPedido.Columns.Add("TotalAReceber", "Total a Receber");
+            dataGridViewPedido.Columns["TotalAReceber"].Visible = false;
+
             dataGridViewPedido.Columns.Add("TotalPago", "Total Pago");
+            dataGridViewPedido.Columns["TotalPago"].Visible = false;
+
             dataGridViewPedido.Columns.Add("Troco", "Troco");
+            dataGridViewPedido.Columns["Troco"].Visible = false;
         }
 
         private void frmVenda_Load(object sender, EventArgs e)
@@ -190,35 +187,6 @@ namespace DBY___TCC.Formularios.Venda
 
         private void btnAdicionarProduto_Click(object sender, EventArgs e)
         {
-            //// Obtém os valores informados pelo usuário
-            //int clienteID = Convert.ToInt32(txtClienteID.Text);
-            //string nomeDoCliente = txtNomeCliente.Text;
-            //int produtoID = Convert.ToInt32(txtProdutoID.Text);
-            //string nomeDoProduto = txtNomeProduto.Text;
-            //string marcaDoProduto = txtMarca.Text;
-            //string categoriaDoProduto = txtCategoria.Text;
-            //decimal valorDoProduto = Convert.ToDecimal(txtValorProduto.Text);
-            //int quantidadeDeProduto = (int)numericQuantidadeProdutos.Value;
-            //bool entrega = chcEntregarPedido.Checked;
-
-            //// Calcula o valor total deste item
-            //decimal valorTotalItem = valorDoProduto * quantidadeDeProduto;
-
-            //// Adiciona o item à DataGridView
-            //dataGridViewPedido.Rows.Add(clienteID, nomeDoCliente, produtoID, nomeDoProduto, marcaDoProduto, categoriaDoProduto, valorDoProduto, quantidadeDeProduto, entrega, valorTotalItem);
-
-            //// Atualiza o total a receber
-            //totalAReceber += valorTotalItem;
-
-            //// Atualiza o TextBox do total a receber
-            //txtTotalReceber.Text = totalAReceber.ToString("C");
-
-            //// Limpa os campos para o próximo item
-            //LimparCampos();
-
-            //O DE CIMA ADICIONAR COM O GPT
-
-            //ESSE É O NOVO
             // Obtenha as informações do cliente, produto, entrega, total a receber, total pago e troco
             int vendaId = ObtenhaProximoIDVenda();  // Substitua com a lógica para obter o próximo ID de venda
             int clienteId = Convert.ToInt32(txtClienteID.Text);
@@ -231,8 +199,6 @@ namespace DBY___TCC.Formularios.Venda
             int quantidade = Convert.ToInt32(numericQuantidadeProdutos.Value);
             bool entrega = chcEntregarPedido.Checked;
             decimal totalAReceber = CalcularValorTotalDaVenda();
-            decimal totalPago = Convert.ToDecimal(txtTotalPago.Text);
-            decimal troco = CalcularTroco();
 
             // Adicione os valores na DataGridView
             dataGridViewPedido.Rows.Add(
@@ -246,65 +212,14 @@ namespace DBY___TCC.Formularios.Venda
                 valorDoProduto,
                 quantidade,
                 entrega,
-                totalAReceber,
-                totalPago,
-                troco
+                totalAReceber
             );
-
-            // Limpe os campos após adicionar o produto
-            LimparCampos();
 
             // Recalcule o valor total da compra
             AtualizarValorTotalCompra();
 
-            //O DE BAIXO JÁ TAVA
-
-            //int quantidadeProduto = (int)numericQuantidadeProdutos.Value;
-
-
-            //if (quantidadeProduto > 0)
-            //{
-
-            //    int clienteID = Convert.ToInt32(txtClienteID.Text);
-            //    string nomeDoCliente = txtNomeCliente.Text;
-            //    int produtoID = Convert.ToInt32(txtProdutoID.Text);
-            //    string nomeDoProduto = txtNomeProduto.Text;
-            //    string marca = txtMarca.Text;
-            //    string categoria = txtCategoria.Text;
-
-            //    decimal valor = Convert.ToDecimal(txtValorProduto.Text);
-
-            //    int quantidade = (int)numericQuantidadeProdutos.Value;
-
-            //    decimal valorTotal = valor * quantidade;
-
-            //    PedidoItem pedidoItem = new PedidoItem
-            //    {
-            //        ClienteID = clienteID,
-            //        NomeDoCliente = nomeDoCliente,
-            //        ProdutoID = produtoID,
-            //        NomeDoProduto = nomeDoProduto,
-            //        Marca = marca,
-            //        Categoria = categoria,
-            //        Valor = valor, //Valor Unitário
-            //        ValorTotal = valorTotal, //Valor Total
-            //        Quantidade = quantidade
-            //    };
-
-            //    listaPedido.Add(pedidoItem);
-
-            //    AtualizarDataGridViewPedido();
-
-            //    AtualizarValorTotalCompra();
-
-            //    LimparCampos();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Informe uma quantidade válida para o produto.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
-
-            //decimal valorTotalAReceber = CalcularValorTotalDaVenda();
+            // Limpe os campos após adicionar o produto
+            LimparCampos();
         }
 
         private int ObtenhaProximoIDVenda()
@@ -356,6 +271,22 @@ namespace DBY___TCC.Formularios.Venda
             return numeroDeVendas;
         }
 
+        private decimal ObterValorPagoDoUsuario()
+        {
+            decimal valorPago;
+
+            if (decimal.TryParse(txtTotalPago.Text.Trim(), NumberStyles.Currency, CultureInfo.CurrentCulture, out valorPago))
+            {
+                // O valor foi informado corretamente
+                return valorPago;
+            }
+            else
+            {
+                MessageBox.Show("Informe um valor de pagamento válido.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return 0m; // Pode retornar um valor padrão (0) ou lançar uma exceção, dependendo do seu requisito
+            }
+        }
+
         private decimal CalcularValorTotalDaVenda()
         {
             decimal valorTotal = 0;
@@ -363,8 +294,8 @@ namespace DBY___TCC.Formularios.Venda
             foreach (DataGridViewRow row in dataGridViewPedido.Rows)
             {
                 // Verifique se a célula não é nula e se o valor é um decimal válido
-                if (row.Cells["ValorTotal"].Value != null &&
-                    decimal.TryParse(row.Cells["ValorTotal"].Value.ToString(), out decimal valorTotalItem))
+                if (row.Cells["TotalAReceber"].Value != null &&
+                    decimal.TryParse(row.Cells["TotalAReceber"].Value.ToString(), out decimal valorTotalItem))
                 {
                     valorTotal += valorTotalItem;
                 }
@@ -376,8 +307,6 @@ namespace DBY___TCC.Formularios.Venda
         private void LimparCampos()
         {
             // Limpe os campos ou redefina-os conforme necessário
-            txtClienteID.Text = string.Empty;
-            txtNomeCliente.Text = string.Empty;
             txtProdutoID.Text = string.Empty;
             txtNomeProduto.Text = string.Empty;
             txtMarca.Text = string.Empty;
@@ -388,34 +317,6 @@ namespace DBY___TCC.Formularios.Venda
             txtTotalPago.Text = string.Empty;
             txtTroco.Text = string.Empty;
         }
-
-
-        //private decimal CalcularValorTotalDaVenda()
-        //{
-        //    decimal valorTotal = 0;
-
-        //    foreach (DataGridViewRow row in dataGridViewPedido.Rows)
-        //    {
-        //        if (row.Cells["ValorTotal"].Value != null)
-        //        {
-        //            string valorTotalCellValue = row.Cells["ValorTotal"].Value.ToString();
-        //            decimal valorTotalItem;
-
-        //            if (decimal.TryParse(valorTotalCellValue, out valorTotalItem))
-        //            {
-        //                valorTotal += valorTotalItem;
-        //            }
-        //            else
-        //            {
-        //                // Trate o erro de formato de valor total conforme necessário
-        //            }
-        //        }
-        //    }
-
-        //    txtTotalReceber.Text = $"{valorTotal:C}";
-
-        //    return valorTotal;
-        //}
 
         private void AtualizarDataGridViewPedido()
         {
@@ -443,49 +344,22 @@ namespace DBY___TCC.Formularios.Venda
 
             foreach (DataGridViewRow row in dataGridViewPedido.Rows)
             {
-                decimal valorTotalItem = Convert.ToDecimal(row.Cells["ValorTotal"].Value);
+                decimal valorDoProduto = Convert.ToDecimal(row.Cells["ValorDoProduto"].Value);
+                int quantidade = Convert.ToInt32(row.Cells["Quantidade"].Value);
+                decimal valorTotalItem = valorDoProduto * quantidade;
+                row.Cells["TotalAReceber"].Value = valorTotalItem;
                 valorTotalCompra += valorTotalItem;
             }
 
-            txtTotalReceber.Text = "R$ " + valorTotalCompra.ToString();
+            txtTotalReceber.Text = valorTotalCompra.ToString("C");
         }
-
-        //private void txtTotalPago_KeyDown(object sender, KeyEventArgs e)
-        //{
-        //    if (e.KeyCode == Keys.Enter)
-        //    {
-        //        CalcularTroco();
-        //        CalcularValorTotalAReceber();
-        //    }
-        //}
 
         private void dataGridViewPedido_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-
-            for (int i = 0; i < dataGridViewPedido.Columns.Count; i++)
+            if (e.ColumnIndex == dataGridViewPedido.Columns["Quantidade"].Index ||
+                e.ColumnIndex == dataGridViewPedido.Columns["ValorDoProduto"].Index)
             {
-                if (i != 8)
-                {
-                    dataGridViewPedido.Columns[i].ReadOnly = true;
-                }
-            }
-
-            if (e.ColumnIndex == 8)
-            {
-                int novaQuantidade;
-                if (int.TryParse(dataGridViewPedido.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), out novaQuantidade))
-                {
-                    decimal precoUnitario = Convert.ToDecimal(dataGridViewPedido.Rows[e.RowIndex].Cells[6].Value);
-                    decimal novoValorTotal = precoUnitario * novaQuantidade;
-
-                    dataGridViewPedido.Rows[e.RowIndex].Cells[7].Value = $"{novoValorTotal:C}";
-
-                    dataGridViewPedido.Rows[e.RowIndex].Cells[8].Value = novaQuantidade;
-                }
-                else
-                {
-                    MessageBox.Show("Quantidade inválida. Digite um valor numérico inteiro.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                AtualizarValorTotalCompra();
             }
         }
 
@@ -516,15 +390,18 @@ namespace DBY___TCC.Formularios.Venda
 
         private void btnVender_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtTotalReceber.Text))
+            {
+                MessageBox.Show("Calcule o total a receber antes de finalizar a venda.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            decimal totalAReceber = decimal.Parse(txtTotalReceber.Text.Trim(), NumberStyles.Currency);
+            decimal valorPago = decimal.Parse(txtTotalPago.Text.Trim(), NumberStyles.Currency);
+            decimal troco = valorPago - totalAReceber;
+
             // Verifica se há itens na DataGridView
             if (dataGridViewPedido.Rows.Count > 0)
             {
-                // Obtém o valor total pago informado pelo usuário
-                totalPago = Convert.ToDecimal(txtTotalPago.Text);
-
-                // Calcula o troco
-                decimal troco = totalPago - totalAReceber;
-
                 // Insere a venda no banco de dados
                 using (SqlConnection conexao = new SqlConnection(ConnectionHelper.ConnectionString))
                 {
@@ -532,19 +409,18 @@ namespace DBY___TCC.Formularios.Venda
 
                     foreach (DataGridViewRow row in dataGridViewPedido.Rows)
                     {
-                        int clienteId;
-
-                        if (row.Cells["ClienteID"].Value != null && int.TryParse(row.Cells["ClienteID"].Value.ToString(), out clienteId))
+                        if (row.Cells["ClienteID"].Value != null && int.TryParse(row.Cells["ClienteID"].Value.ToString(), out int clienteID))
                         {
-                            int clienteID = Convert.ToInt32(row.Cells["ClienteID"].Value);
-                            string nomeDoCliente = row.Cells["NomeDoCliente"].Value.ToString();
                             int produtoID = Convert.ToInt32(row.Cells["ProdutoID"].Value);
+                            string nomeDoCliente = row.Cells["NomeDoCliente"].Value.ToString();
                             string nomeDoProduto = row.Cells["NomeDoProduto"].Value.ToString();
                             string marcaDoProduto = row.Cells["MarcaDoProduto"].Value.ToString();
                             string categoriaDoProduto = row.Cells["CategoriaDoProduto"].Value.ToString();
                             decimal valorDoProduto = Convert.ToDecimal(row.Cells["ValorDoProduto"].Value);
-                            int quantidadeDeProduto = Convert.ToInt32(row.Cells["QuantidadeDeProduto"].Value);
+                            int quantidadeDeProduto = Convert.ToInt32(row.Cells["Quantidade"].Value);
                             bool entrega = (bool)row.Cells["Entrega"].Value;
+
+                            string entregaValue = entrega ? "SIM" : "NÃO"; // Converte a variável entrega em "SIM" ou "NÃO"
 
                             string query = "INSERT INTO Vendas (ClienteID, NomeDoCliente, ProdutoID, NomeDoProduto, MarcaDoProduto, CategoriaDoProduto, ValorDoProduto, QuantidadeDeProduto, Entrega, TotalAReceber, TotalPago, Troco) " +
                                 "VALUES (@ClienteID, @NomeDoCliente, @ProdutoID, @NomeDoProduto, @MarcaDoProduto, @CategoriaDoProduto, @ValorDoProduto, @QuantidadeDeProduto, @Entrega, @TotalAReceber, @TotalPago, @Troco)";
@@ -552,42 +428,73 @@ namespace DBY___TCC.Formularios.Venda
                             using (SqlCommand cmd = new SqlCommand(query, conexao))
                             {
                                 cmd.Parameters.AddWithValue("@ClienteID", clienteID);
-                                cmd.Parameters.AddWithValue("@NomeDoCliente", nomeDoCliente);
+                                cmd.Parameters.AddWithValue("@NomeDoCliente", nomeDoCliente); // Adicione a definição do parâmetro
                                 cmd.Parameters.AddWithValue("@ProdutoID", produtoID);
                                 cmd.Parameters.AddWithValue("@NomeDoProduto", nomeDoProduto);
                                 cmd.Parameters.AddWithValue("@MarcaDoProduto", marcaDoProduto);
                                 cmd.Parameters.AddWithValue("@CategoriaDoProduto", categoriaDoProduto);
                                 cmd.Parameters.AddWithValue("@ValorDoProduto", valorDoProduto);
                                 cmd.Parameters.AddWithValue("@QuantidadeDeProduto", quantidadeDeProduto);
-                                cmd.Parameters.AddWithValue("@Entrega", entrega);
+                                cmd.Parameters.AddWithValue("@Entrega", entregaValue);
                                 cmd.Parameters.AddWithValue("@TotalAReceber", totalAReceber);
-                                cmd.Parameters.AddWithValue("@TotalPago", totalPago);
+                                cmd.Parameters.AddWithValue("@TotalPago", valorPago);
                                 cmd.Parameters.AddWithValue("@Troco", troco);
 
                                 cmd.ExecuteNonQuery();
                             }
                         }
-
                     }
                 }
+                // Agora que os valores foram inseridos no banco, você pode atualizar o DataGridView com os valores calculados
+                dataGridViewPedido.Columns["TotalAReceber"].Visible = true;
+                dataGridViewPedido.Columns["TotalPago"].Visible = true;
+                dataGridViewPedido.Columns["Troco"].Visible = true;
 
-                // Limpa a DataGridView e outros campos
+                // Preencher as colunas no DataGridView
+                dataGridViewPedido.Rows[0].Cells["TotalAReceber"].Value = totalAReceber;
+                dataGridViewPedido.Rows[0].Cells["TotalPago"].Value = valorPago;
+                dataGridViewPedido.Rows[0].Cells["Troco"].Value = troco;
+
+                // Limpar a DataGridView e outros campos
                 dataGridViewPedido.Rows.Clear();
                 LimparCampos();
 
-                // Limpa as variáveis de rastreamento
+                // Limpar as variáveis de rastreamento
                 totalAReceber = 0m;
                 totalPago = 0m;
 
-                // Atualiza o TextBox do total a receber
+                // Atualizar o TextBox do total a receber
                 txtTotalReceber.Text = "R$ 0.00";
 
-                // Exibe o troco
+                // Exibir o troco
                 txtTroco.Text = troco.ToString("C");
             }
             else
             {
                 MessageBox.Show("Nenhum item na venda. Adicione itens primeiro.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnCalcularTotalPago_Click(object sender, EventArgs e)
+        {
+            decimal valorTotalCompra = CalcularValorTotalDaVenda();
+
+            if (decimal.TryParse(txtTotalPago.Text, out decimal valorPago))
+            {
+                if (valorPago >= valorTotalCompra)
+                {
+                    decimal troco = valorPago - valorTotalCompra;
+                    txtTroco.Text = $"R$ {troco:F2}";
+                    //txtTotalReceber.Text = $"R$ {valorTotalCompra:F2}"; // Atualize o total a receber
+                }
+                else
+                {
+                    MessageBox.Show("O valor pago é insuficiente. Verifique o valor pago.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Informe um valor de pagamento válido.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }
