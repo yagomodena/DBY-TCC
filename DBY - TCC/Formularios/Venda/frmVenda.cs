@@ -1,34 +1,52 @@
 ﻿using DBY___TCC.Classes;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Tracing;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DBY___TCC.Formularios.Venda
 {
     public partial class frmVenda : Form
     {
+        //Variáveis para rastrear os valores
+        private decimal totalAReceber = 0m;
+        private decimal totalPago = 0m;
+
         public frmVenda()
         {
             InitializeComponent();
             LoadTheme();
 
-            // Adicione as colunas ao DataGridView
-            dataGridViewPedido.Columns.Add("ClienteID", "Cliente ID");
+            //dataGridViewPedido.Columns.Add("ClienteID", "Cliente ID");
+            //dataGridViewPedido.Columns.Add("NomeDoCliente", "Nome do Cliente");
+            //dataGridViewPedido.Columns.Add("ProdutoID", "Produto ID");
+            //dataGridViewPedido.Columns.Add("NomeDoProduto", "Nome do Produto");
+            //dataGridViewPedido.Columns.Add("Marca", "Marca");
+            //dataGridViewPedido.Columns.Add("Categoria", "Categoria");
+            //dataGridViewPedido.Columns.Add("ValorUnitario", "ValorUnitario");
+            //dataGridViewPedido.Columns.Add("ValorTotal", "ValorTotal");
+            //dataGridViewPedido.Columns.Add("Quantidade", "Quantidade");
+            // Adicione as colunas à DataGridView
+
+            dataGridViewPedido.Columns.Add("vendaID", "ID da Venda");
+            dataGridViewPedido.Columns.Add("ClienteID", "ID do Cliente");
             dataGridViewPedido.Columns.Add("NomeDoCliente", "Nome do Cliente");
-            dataGridViewPedido.Columns.Add("ProdutoID", "Produto ID");
+            dataGridViewPedido.Columns.Add("ProdutoID", "ID do Produto");
             dataGridViewPedido.Columns.Add("NomeDoProduto", "Nome do Produto");
-            dataGridViewPedido.Columns.Add("Marca", "Marca");
-            dataGridViewPedido.Columns.Add("Categoria", "Categoria");
-            dataGridViewPedido.Columns.Add("ValorUnitario", "ValorUnitario");
-            dataGridViewPedido.Columns.Add("ValorTotal", "ValorTotal");
+            dataGridViewPedido.Columns.Add("MarcaDoProduto", "Marca do Produto");
+            dataGridViewPedido.Columns.Add("CategoriaDoProduto", "Categoria do Produto");
+            dataGridViewPedido.Columns.Add("ValorDoProduto", "Valor do Produto");
             dataGridViewPedido.Columns.Add("Quantidade", "Quantidade");
+            // Coluna de entrega como CheckBox
+            DataGridViewCheckBoxColumn entregaColumn = new DataGridViewCheckBoxColumn();
+            entregaColumn.HeaderText = "Entrega";
+            entregaColumn.Name = "Entrega";
+            dataGridViewPedido.Columns.Add(entregaColumn);
+            dataGridViewPedido.Columns.Add("TotalAReceber", "Total a Receber");
+            dataGridViewPedido.Columns.Add("TotalPago", "Total Pago");
+            dataGridViewPedido.Columns.Add("Troco", "Troco");
         }
 
         private void frmVenda_Load(object sender, EventArgs e)
@@ -52,11 +70,9 @@ namespace DBY___TCC.Formularios.Venda
 
         private void btnPesquisarCliente_Click(object sender, EventArgs e)
         {
-            // Obtenha o Cliente ID fornecido pelo usuário
             int clienteID;
             if (int.TryParse(txtClienteID.Text, out clienteID))
             {
-                // Realize a consulta no banco de dados para obter o nome do cliente
                 string nomeDoCliente = ObterNomeDoCliente(clienteID);
 
                 if (!string.IsNullOrEmpty(nomeDoCliente))
@@ -76,12 +92,8 @@ namespace DBY___TCC.Formularios.Venda
 
         private string ObterNomeDoCliente(int clienteID)
         {
-            string nomeDoCliente = ""; // Inicialize com uma string vazia
+            string nomeDoCliente = "";
 
-            // Conecte-se ao banco de dados e execute uma consulta para obter o nome do cliente
-            // Substitua isso com a lógica real para acessar seu banco de dados
-
-            // Exemplo fictício:
             using (SqlConnection conexao = new SqlConnection(ConnectionHelper.ConnectionString))
             {
                 conexao.Open();
@@ -98,16 +110,13 @@ namespace DBY___TCC.Formularios.Venda
 
         private void btnPesquisarProduto_Click(object sender, EventArgs e)
         {
-            // Obtenha o Produto ID fornecido pelo usuário
             int produtoID;
             if (int.TryParse(txtProdutoID.Text, out produtoID))
             {
-                // Realize a consulta no banco de dados para obter informações do produto
                 ProdutoInfo produto = ObterInformacoesDoProduto(produtoID);
 
                 if (produto != null)
                 {
-                    // Preencha os campos de texto com as informações do produto
                     txtNomeProduto.Text = produto.NomeDoProduto;
                     txtValorProduto.Text = produto.PrecoDeVenda.ToString("0.00");
                     txtMarca.Text = produto.Marca;
@@ -126,12 +135,8 @@ namespace DBY___TCC.Formularios.Venda
 
         private ProdutoInfo ObterInformacoesDoProduto(int produtoID)
         {
-            ProdutoInfo produto = null; // Inicialize com um valor nulo
+            ProdutoInfo produto = null;
 
-            // Conecte-se ao banco de dados e execute uma consulta para obter informações do produto
-            // Substitua isso com a lógica real para acessar seu banco de dados
-
-            // Exemplo fictício:
             using (SqlConnection conexao = new SqlConnection(ConnectionHelper.ConnectionString))
             {
                 conexao.Open();
@@ -181,80 +186,241 @@ namespace DBY___TCC.Formularios.Venda
             public int Quantidade { get; set; }
         }
 
-        private List<PedidoItem> listaPedido = new List<PedidoItem>(); // Lista para armazenar os produtos no pedido
+        private List<PedidoItem> listaPedido = new List<PedidoItem>();
 
         private void btnAdicionarProduto_Click(object sender, EventArgs e)
         {
-            // Obtenha a quantidade de produtos do controle NumericUpDown
-            int quantidadeProduto = (int)numericQuantidadeProdutos.Value;
+            //// Obtém os valores informados pelo usuário
+            //int clienteID = Convert.ToInt32(txtClienteID.Text);
+            //string nomeDoCliente = txtNomeCliente.Text;
+            //int produtoID = Convert.ToInt32(txtProdutoID.Text);
+            //string nomeDoProduto = txtNomeProduto.Text;
+            //string marcaDoProduto = txtMarca.Text;
+            //string categoriaDoProduto = txtCategoria.Text;
+            //decimal valorDoProduto = Convert.ToDecimal(txtValorProduto.Text);
+            //int quantidadeDeProduto = (int)numericQuantidadeProdutos.Value;
+            //bool entrega = chcEntregarPedido.Checked;
+
+            //// Calcula o valor total deste item
+            //decimal valorTotalItem = valorDoProduto * quantidadeDeProduto;
+
+            //// Adiciona o item à DataGridView
+            //dataGridViewPedido.Rows.Add(clienteID, nomeDoCliente, produtoID, nomeDoProduto, marcaDoProduto, categoriaDoProduto, valorDoProduto, quantidadeDeProduto, entrega, valorTotalItem);
+
+            //// Atualiza o total a receber
+            //totalAReceber += valorTotalItem;
+
+            //// Atualiza o TextBox do total a receber
+            //txtTotalReceber.Text = totalAReceber.ToString("C");
+
+            //// Limpa os campos para o próximo item
+            //LimparCampos();
+
+            //O DE CIMA ADICIONAR COM O GPT
+
+            //ESSE É O NOVO
+            // Obtenha as informações do cliente, produto, entrega, total a receber, total pago e troco
+            int vendaId = ObtenhaProximoIDVenda();  // Substitua com a lógica para obter o próximo ID de venda
+            int clienteId = Convert.ToInt32(txtClienteID.Text);
+            string nomeDoCliente = txtNomeCliente.Text;
+            int produtoId = Convert.ToInt32(txtProdutoID.Text);
+            string nomeDoProduto = txtNomeProduto.Text;
+            string marcaDoProduto = txtMarca.Text;
+            string categoriaDoProduto = txtCategoria.Text;
+            decimal valorDoProduto = Convert.ToDecimal(txtValorProduto.Text);
+            int quantidade = Convert.ToInt32(numericQuantidadeProdutos.Value);
+            bool entrega = chcEntregarPedido.Checked;
+            decimal totalAReceber = CalcularValorTotalDaVenda();
+            decimal totalPago = Convert.ToDecimal(txtTotalPago.Text);
+            decimal troco = CalcularTroco();
+
+            // Adicione os valores na DataGridView
+            dataGridViewPedido.Rows.Add(
+                vendaId,
+                clienteId,
+                nomeDoCliente,
+                produtoId,
+                nomeDoProduto,
+                marcaDoProduto,
+                categoriaDoProduto,
+                valorDoProduto,
+                quantidade,
+                entrega,
+                totalAReceber,
+                totalPago,
+                troco
+            );
+
+            // Limpe os campos após adicionar o produto
+            LimparCampos();
+
+            // Recalcule o valor total da compra
+            AtualizarValorTotalCompra();
+
+            //O DE BAIXO JÁ TAVA
+
+            //int quantidadeProduto = (int)numericQuantidadeProdutos.Value;
 
 
-            if (quantidadeProduto > 0)
+            //if (quantidadeProduto > 0)
+            //{
+
+            //    int clienteID = Convert.ToInt32(txtClienteID.Text);
+            //    string nomeDoCliente = txtNomeCliente.Text;
+            //    int produtoID = Convert.ToInt32(txtProdutoID.Text);
+            //    string nomeDoProduto = txtNomeProduto.Text;
+            //    string marca = txtMarca.Text;
+            //    string categoria = txtCategoria.Text;
+
+            //    decimal valor = Convert.ToDecimal(txtValorProduto.Text);
+
+            //    int quantidade = (int)numericQuantidadeProdutos.Value;
+
+            //    decimal valorTotal = valor * quantidade;
+
+            //    PedidoItem pedidoItem = new PedidoItem
+            //    {
+            //        ClienteID = clienteID,
+            //        NomeDoCliente = nomeDoCliente,
+            //        ProdutoID = produtoID,
+            //        NomeDoProduto = nomeDoProduto,
+            //        Marca = marca,
+            //        Categoria = categoria,
+            //        Valor = valor, //Valor Unitário
+            //        ValorTotal = valorTotal, //Valor Total
+            //        Quantidade = quantidade
+            //    };
+
+            //    listaPedido.Add(pedidoItem);
+
+            //    AtualizarDataGridViewPedido();
+
+            //    AtualizarValorTotalCompra();
+
+            //    LimparCampos();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Informe uma quantidade válida para o produto.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+
+            //decimal valorTotalAReceber = CalcularValorTotalDaVenda();
+        }
+
+        private int ObtenhaProximoIDVenda()
+        {
+            // Suponhamos que você tenha um campo no seu banco de dados que mantém o número de vendas realizadas
+            // Você pode consultar esse campo e adicionar 1 para obter o próximo ID
+            int numeroDeVendas = ConsultarNumeroDeVendasNoBancoDeDados(); // Implemente a função para consultar o banco de dados
+
+            // Adicione 1 ao número de vendas para obter o próximo ID
+            int proximoID = numeroDeVendas + 1;
+
+            return proximoID;
+        }
+
+        private decimal CalcularTroco()
+        {
+            decimal totalAReceber = CalcularValorTotalDaVenda();
+            decimal totalPago;
+
+            if (decimal.TryParse(txtTotalPago.Text, out totalPago))
             {
-                // Obtenha as informações do produto (substitua com a lógica real)
-                int clienteID = Convert.ToInt32(txtClienteID.Text);
-                string nomeDoCliente = txtNomeCliente.Text;
-                int produtoID = Convert.ToInt32(txtProdutoID.Text);
-                string nomeDoProduto = txtNomeProduto.Text;
-                string marca = txtMarca.Text;
-                string categoria = txtCategoria.Text;
+                decimal troco = totalPago - totalAReceber;
+                return troco;
+            }
 
-                decimal valor = Convert.ToDecimal(txtValorProduto.Text);
-                // Obtenha a quantidade de produtos do controle NumericUpDown
-                int quantidade = (int)numericQuantidadeProdutos.Value;
+            // Se a conversão do valor pago falhar, retorne 0 para o troco
+            return 0;
+        }
 
-                decimal valorTotal = valor * quantidade;
+        private int ConsultarNumeroDeVendasNoBancoDeDados()
+        {
+            int numeroDeVendas = 0;
 
-                PedidoItem pedidoItem = new PedidoItem
+            // Conecte-se ao banco de dados (substitua a ConnectionString pelo seu caminho)
+            using (SqlConnection connection = new SqlConnection(ConnectionHelper.ConnectionString))
+            {
+                connection.Open();
+
+                // Consulta SQL para obter o número de vendas realizadas
+                string query = "SELECT COUNT(*) FROM Vendas"; // Assumindo que "Vendas" é a tabela de vendas
+
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    ClienteID = clienteID,
-                    NomeDoCliente = nomeDoCliente,
-                    ProdutoID = produtoID,
-                    NomeDoProduto = nomeDoProduto,
-                    Marca = marca,
-                    Categoria = categoria,
-                    Valor = valor, //Valor Unitário
-                    ValorTotal = valorTotal, //Valor Total
-                    Quantidade = quantidade
-                };
-
-                listaPedido.Add(pedidoItem);
-
-                AtualizarDataGridViewPedido();
-
-                AtualizarValorTotalCompra();
-
-                LimparCampos();
-            }
-            else
-            {
-                MessageBox.Show("Informe uma quantidade válida para o produto.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    // Execute o comando SQL e obtenha o número de vendas
+                    numeroDeVendas = (int)command.ExecuteScalar();
+                }
             }
 
-            // Obtenha o valor total a receber da compra (já calculado)
-            decimal valorTotalAReceber = CalcularValorTotalDaVenda();
+            return numeroDeVendas;
         }
 
         private decimal CalcularValorTotalDaVenda()
         {
-            decimal valorTotalCompra = 0.0m;
+            decimal valorTotal = 0;
 
-            // Percorra as linhas da DataGridView e some os valores totais de cada item
             foreach (DataGridViewRow row in dataGridViewPedido.Rows)
             {
-                decimal valorTotalItem = Convert.ToDecimal(row.Cells["ValorTotal"].Value);
-                valorTotalCompra += valorTotalItem;
+                // Verifique se a célula não é nula e se o valor é um decimal válido
+                if (row.Cells["ValorTotal"].Value != null &&
+                    decimal.TryParse(row.Cells["ValorTotal"].Value.ToString(), out decimal valorTotalItem))
+                {
+                    valorTotal += valorTotalItem;
+                }
             }
 
-            return valorTotalCompra;
+            return valorTotal;
         }
+
+        private void LimparCampos()
+        {
+            // Limpe os campos ou redefina-os conforme necessário
+            txtClienteID.Text = string.Empty;
+            txtNomeCliente.Text = string.Empty;
+            txtProdutoID.Text = string.Empty;
+            txtNomeProduto.Text = string.Empty;
+            txtMarca.Text = string.Empty;
+            txtCategoria.Text = string.Empty;
+            txtValorProduto.Text = string.Empty;
+            numericQuantidadeProdutos.Value = 0; // Defina o valor padrão
+            chcEntregarPedido.Checked = false; // Desmarque a caixa de seleção de entrega
+            txtTotalPago.Text = string.Empty;
+            txtTroco.Text = string.Empty;
+        }
+
+
+        //private decimal CalcularValorTotalDaVenda()
+        //{
+        //    decimal valorTotal = 0;
+
+        //    foreach (DataGridViewRow row in dataGridViewPedido.Rows)
+        //    {
+        //        if (row.Cells["ValorTotal"].Value != null)
+        //        {
+        //            string valorTotalCellValue = row.Cells["ValorTotal"].Value.ToString();
+        //            decimal valorTotalItem;
+
+        //            if (decimal.TryParse(valorTotalCellValue, out valorTotalItem))
+        //            {
+        //                valorTotal += valorTotalItem;
+        //            }
+        //            else
+        //            {
+        //                // Trate o erro de formato de valor total conforme necessário
+        //            }
+        //        }
+        //    }
+
+        //    txtTotalReceber.Text = $"{valorTotal:C}";
+
+        //    return valorTotal;
+        //}
 
         private void AtualizarDataGridViewPedido()
         {
-            // Limpe as linhas existentes no DataGridView
             dataGridViewPedido.Rows.Clear();
 
-            // Adicione os produtos do pedido como novas linhas no DataGridView
             foreach (PedidoItem item in listaPedido)
             {
                 dataGridViewPedido.Rows.Add(
@@ -271,118 +437,157 @@ namespace DBY___TCC.Formularios.Venda
             }
         }
 
-        private void LimparCampos()
-        {
-            // Limpe os campos ou redefina-os conforme necessário
-            txtProdutoID.Text = string.Empty;
-            txtNomeProduto.Text = string.Empty;
-            txtMarca.Text = string.Empty;
-            txtCategoria.Text = string.Empty;
-            txtValorProduto.Text = string.Empty;
-            numericQuantidadeProdutos.Value = 0; // Defina o valor padrão
-        }
-
         private void AtualizarValorTotalCompra()
         {
             decimal valorTotalCompra = 0.0m;
 
-            // Percorra as linhas da DataGridView e some os valores totais de cada item
             foreach (DataGridViewRow row in dataGridViewPedido.Rows)
             {
                 decimal valorTotalItem = Convert.ToDecimal(row.Cells["ValorTotal"].Value);
                 valorTotalCompra += valorTotalItem;
             }
 
-            // Atualize a Label com o valor total da compra
             txtTotalReceber.Text = "R$ " + valorTotalCompra.ToString();
         }
 
-        private void txtTotalPago_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                // Calcula o troco quando a tecla "Enter" é pressionada
-                CalcularTroco();
-            }
-        }
-
-        private void CalcularTroco()
-        {
-            // Obtenha o valor total a receber da compra (já calculado)
-            decimal valorTotalAReceber = CalcularValorTotalDaVenda();
-
-            if (decimal.TryParse(txtTotalPago.Text, out decimal valorPago))
-            {
-
-                txtTotalReceber.Text = $" {valorTotalAReceber:C}"; // Formate como moeda com "R$"
-                txtTotalPago.Text = $" {valorPago:C}"; // Formate como moeda com "R$"
-
-                // Calcule o troco
-                decimal troco = valorPago - valorTotalAReceber;
-
-                if (troco >= 0)
-                {
-                    // Exiba o troco na TextBox de troco
-                    txtTroco.Text = troco.ToString("C"); // Formatando como moeda
-                }
-            }
-            else
-            {
-                txtTroco.Text = string.Empty; // Limpe o TextBox de troco se o valor pago for inválido
-            }
-        }
+        //private void txtTotalPago_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    if (e.KeyCode == Keys.Enter)
+        //    {
+        //        CalcularTroco();
+        //        CalcularValorTotalAReceber();
+        //    }
+        //}
 
         private void dataGridViewPedido_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
 
             for (int i = 0; i < dataGridViewPedido.Columns.Count; i++)
             {
-                if (i != 8) // Índice 8 é a coluna da quantidade, que é editável
+                if (i != 8)
                 {
                     dataGridViewPedido.Columns[i].ReadOnly = true;
                 }
             }
-            // Certifique-se de que a coluna editada seja a coluna da quantidade de produto
+
             if (e.ColumnIndex == 8)
             {
-                // Obtenha a quantidade editada da célula
                 int novaQuantidade;
                 if (int.TryParse(dataGridViewPedido.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), out novaQuantidade))
                 {
-                    // Faça o cálculo do novo valor total (preço unitário * nova quantidade)
                     decimal precoUnitario = Convert.ToDecimal(dataGridViewPedido.Rows[e.RowIndex].Cells[6].Value);
                     decimal novoValorTotal = precoUnitario * novaQuantidade;
 
-                    // Atualize a célula do valor total com o novo valor formatado como moeda
                     dataGridViewPedido.Rows[e.RowIndex].Cells[7].Value = $"{novoValorTotal:C}";
 
-                    // Atualize a célula da quantidade com a nova quantidade
                     dataGridViewPedido.Rows[e.RowIndex].Cells[8].Value = novaQuantidade;
                 }
                 else
                 {
-                    // Se a edição da quantidade for inválida, exiba uma mensagem de erro
                     MessageBox.Show("Quantidade inválida. Digite um valor numérico inteiro.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
-        private void dataGridViewPedido_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void CalcularValorTotalAReceber()
         {
-            if (e.ColumnIndex == 8) // Supondo que a coluna da quantidade seja a coluna de índice 8
-            {
-                decimal valorTotalCompra = 0;
+            decimal valorTotalCompra = 0;
 
-                foreach (DataGridViewRow row in dataGridViewPedido.Rows)
+            foreach (DataGridViewRow row in dataGridViewPedido.Rows)
+            {
+                int quantidade = Convert.ToInt32(row.Cells[8].Value);
+                decimal valorUnitario = Convert.ToDecimal(row.Cells[6].Value);
+                decimal valorTotal = valorUnitario * quantidade;
+                valorTotalCompra += valorTotal;
+            }
+
+            txtTotalReceber.Text = $"{valorTotalCompra:C}";
+        }
+
+        //private void dataGridViewPedido_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if (e.ColumnIndex == 8)
+        //    {
+        //        CalcularValorTotalAReceber();
+
+        //        CalcularTroco();
+        //    }
+        //}
+
+        private void btnVender_Click(object sender, EventArgs e)
+        {
+            // Verifica se há itens na DataGridView
+            if (dataGridViewPedido.Rows.Count > 0)
+            {
+                // Obtém o valor total pago informado pelo usuário
+                totalPago = Convert.ToDecimal(txtTotalPago.Text);
+
+                // Calcula o troco
+                decimal troco = totalPago - totalAReceber;
+
+                // Insere a venda no banco de dados
+                using (SqlConnection conexao = new SqlConnection(ConnectionHelper.ConnectionString))
                 {
-                    int quantidade = Convert.ToInt32(row.Cells[8].Value); // Supondo que a coluna da quantidade seja a coluna de índice 8
-                    decimal valorUnitario = Convert.ToDecimal(row.Cells[6].Value); // Supondo que a coluna do valor unitário seja a coluna de índice 6
-                    decimal valorTotal = valorUnitario * quantidade;
-                    valorTotalCompra += valorTotal;
+                    conexao.Open();
+
+                    foreach (DataGridViewRow row in dataGridViewPedido.Rows)
+                    {
+                        int clienteId;
+
+                        if (row.Cells["ClienteID"].Value != null && int.TryParse(row.Cells["ClienteID"].Value.ToString(), out clienteId))
+                        {
+                            int clienteID = Convert.ToInt32(row.Cells["ClienteID"].Value);
+                            string nomeDoCliente = row.Cells["NomeDoCliente"].Value.ToString();
+                            int produtoID = Convert.ToInt32(row.Cells["ProdutoID"].Value);
+                            string nomeDoProduto = row.Cells["NomeDoProduto"].Value.ToString();
+                            string marcaDoProduto = row.Cells["MarcaDoProduto"].Value.ToString();
+                            string categoriaDoProduto = row.Cells["CategoriaDoProduto"].Value.ToString();
+                            decimal valorDoProduto = Convert.ToDecimal(row.Cells["ValorDoProduto"].Value);
+                            int quantidadeDeProduto = Convert.ToInt32(row.Cells["QuantidadeDeProduto"].Value);
+                            bool entrega = (bool)row.Cells["Entrega"].Value;
+
+                            string query = "INSERT INTO Vendas (ClienteID, NomeDoCliente, ProdutoID, NomeDoProduto, MarcaDoProduto, CategoriaDoProduto, ValorDoProduto, QuantidadeDeProduto, Entrega, TotalAReceber, TotalPago, Troco) " +
+                                "VALUES (@ClienteID, @NomeDoCliente, @ProdutoID, @NomeDoProduto, @MarcaDoProduto, @CategoriaDoProduto, @ValorDoProduto, @QuantidadeDeProduto, @Entrega, @TotalAReceber, @TotalPago, @Troco)";
+
+                            using (SqlCommand cmd = new SqlCommand(query, conexao))
+                            {
+                                cmd.Parameters.AddWithValue("@ClienteID", clienteID);
+                                cmd.Parameters.AddWithValue("@NomeDoCliente", nomeDoCliente);
+                                cmd.Parameters.AddWithValue("@ProdutoID", produtoID);
+                                cmd.Parameters.AddWithValue("@NomeDoProduto", nomeDoProduto);
+                                cmd.Parameters.AddWithValue("@MarcaDoProduto", marcaDoProduto);
+                                cmd.Parameters.AddWithValue("@CategoriaDoProduto", categoriaDoProduto);
+                                cmd.Parameters.AddWithValue("@ValorDoProduto", valorDoProduto);
+                                cmd.Parameters.AddWithValue("@QuantidadeDeProduto", quantidadeDeProduto);
+                                cmd.Parameters.AddWithValue("@Entrega", entrega);
+                                cmd.Parameters.AddWithValue("@TotalAReceber", totalAReceber);
+                                cmd.Parameters.AddWithValue("@TotalPago", totalPago);
+                                cmd.Parameters.AddWithValue("@Troco", troco);
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+
+                    }
                 }
 
-                // Atualize a TextBox do Total a Receber com o novo valor total da compra
-                txtTotalReceber.Text = $"{valorTotalCompra:C}";
+                // Limpa a DataGridView e outros campos
+                dataGridViewPedido.Rows.Clear();
+                LimparCampos();
+
+                // Limpa as variáveis de rastreamento
+                totalAReceber = 0m;
+                totalPago = 0m;
+
+                // Atualiza o TextBox do total a receber
+                txtTotalReceber.Text = "R$ 0.00";
+
+                // Exibe o troco
+                txtTroco.Text = troco.ToString("C");
+            }
+            else
+            {
+                MessageBox.Show("Nenhum item na venda. Adicione itens primeiro.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

@@ -76,6 +76,7 @@
             this.btnVender.TabIndex = 8;
             this.btnVender.Text = "VENDER";
             this.btnVender.UseVisualStyleBackColor = false;
+            this.btnVender.Click += new System.EventHandler(this.btnVender_Click);
             // 
             // btnPesquisarCliente
             // 
@@ -90,6 +91,18 @@
             this.btnPesquisarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPesquisarCliente.UseVisualStyleBackColor = true;
             this.btnPesquisarCliente.Click += new System.EventHandler(this.btnPesquisarCliente_Click);
+            // esse de cima
+            //
+            //
+            //
+            //
+            //
+            //
+            ////
+            //
+            //
+            //
+            // 
             // 
             // txtClienteID
             // 
@@ -195,7 +208,18 @@
             this.dataGridViewPedido.Size = new System.Drawing.Size(1333, 204);
             this.dataGridViewPedido.TabIndex = 19;
             this.dataGridViewPedido.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPedido_CellEndEdit);
-            this.dataGridViewPedido.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPedido_CellValueChanged);
+            //this.dataGridViewPedido.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPedido_CellValueChanged);
+            // esse de cima
+            //
+            //
+            //
+            //
+            //
+            //
+            ////
+            //
+            //
+            //
             // 
             // btnAdicionarProduto
             // 
@@ -308,7 +332,19 @@
             this.txtTotalPago.Name = "txtTotalPago";
             this.txtTotalPago.Size = new System.Drawing.Size(266, 36);
             this.txtTotalPago.TabIndex = 35;
-            this.txtTotalPago.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTotalPago_KeyDown);
+            //this.txtTotalPago.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTotalPago_KeyDown);
+            // esse de cima
+            //
+            //
+            //
+            //
+            //
+            //
+            ////
+            //
+            //
+            //
+            // 
             // 
             // txtTotalReceber
             // 

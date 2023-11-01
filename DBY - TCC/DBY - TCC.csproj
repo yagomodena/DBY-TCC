@@ -215,6 +215,7 @@
   <ItemGroup>
     <Compile Include="Classes\Categoria.cs" />
     <Compile Include="Classes\Marcas.cs" />
+    <Compile Include="Classes\Pedido.cs" />
     <Compile Include="Classes\Produto.cs" />
     <Compile Include="Classes\Usuario.cs" />
     <Compile Include="Classes\Clientes.cs" />
