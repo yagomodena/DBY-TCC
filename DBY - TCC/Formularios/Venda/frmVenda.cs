@@ -11,13 +11,11 @@ namespace DBY___TCC.Formularios.Venda
 {
     public partial class frmVenda : Form
     {
-        //Variáveis para rastrear os valores
         private decimal totalAReceber = 0m;
         private decimal totalPago = 0m;
         private int clienteId;
         private string nomeDoCliente;
         int vendaId;
-
 
         public frmVenda()
         {
@@ -63,132 +61,11 @@ namespace DBY___TCC.Formularios.Venda
                     btn.FlatAppearance.BorderColor = CorTema.SecondaryColor;
                 }
             }
-        }
-
-        private void btnPesquisarCliente_Click(object sender, EventArgs e)
-        {
-            int clienteID;
-            if (int.TryParse(txtClienteID.Text, out clienteID))
-            {
-                string nomeDoCliente = ObterNomeDoCliente(clienteID);
-
-                if (!string.IsNullOrEmpty(nomeDoCliente))
-                {
-                    txtNomeCliente.Text = nomeDoCliente;
-                }
-                else
-                {
-                    MessageBox.Show("Cliente não encontrado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Informe um Cliente ID válido", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private string ObterNomeDoCliente(int clienteID)
-        {
-            string nomeDoCliente = "";
-
-            using (SqlConnection conexao = new SqlConnection(ConnectionHelper.ConnectionString))
-            {
-                conexao.Open();
-                string query = "SELECT Nome FROM Clientes WHERE ID = @ClienteID";
-                using (SqlCommand cmd = new SqlCommand(query, conexao))
-                {
-                    cmd.Parameters.AddWithValue("@ClienteID", clienteID);
-                    nomeDoCliente = (string)cmd.ExecuteScalar();
-                }
-            }
-
-            return nomeDoCliente;
-        }
-
-        private void btnPesquisarProduto_Click(object sender, EventArgs e)
-        {
-            int produtoID;
-            if (int.TryParse(txtProdutoID.Text, out produtoID))
-            {
-                ProdutoInfo produto = ObterInformacoesDoProduto(produtoID);
-
-                if (produto != null)
-                {
-                    txtNomeProduto.Text = produto.NomeDoProduto;
-                    txtValorProduto.Text = produto.PrecoDeVenda.ToString("0.00");
-                    txtMarca.Text = produto.Marca;
-                    txtCategoria.Text = produto.Categoria;
-                }
-                else
-                {
-                    MessageBox.Show("Produto não encontrado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Informe um Produto ID válido", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private ProdutoInfo ObterInformacoesDoProduto(int produtoID)
-        {
-            ProdutoInfo produto = null;
-
-            using (SqlConnection conexao = new SqlConnection(ConnectionHelper.ConnectionString))
-            {
-                conexao.Open();
-                string query = "SELECT NomeDoProduto, PrecoDeCusto, PrecoDeVenda, Marca, Categoria FROM Produtos WHERE ID = @ProdutoID";
-                using (SqlCommand cmd = new SqlCommand(query, conexao))
-                {
-                    cmd.Parameters.AddWithValue("@ProdutoID", produtoID);
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            produto = new ProdutoInfo
-                            {
-                                NomeDoProduto = reader["NomeDoProduto"].ToString(),
-                                PrecoDeCusto = (decimal)reader["PrecoDeCusto"],
-                                PrecoDeVenda = (decimal)reader["PrecoDeVenda"],
-                                Marca = reader["Marca"].ToString(),
-                                Categoria = reader["Categoria"].ToString()
-                            };
-                        }
-                    }
-                }
-            }
-
-            return produto;
-        }
-
-        private class ProdutoInfo
-        {
-            public string NomeDoProduto { get; set; }
-            public decimal PrecoDeCusto { get; set; }
-            public decimal PrecoDeVenda { get; set; }
-            public string Marca { get; set; }
-            public string Categoria { get; set; }
-        }
-
-        public class PedidoItem
-        {
-            public int ClienteID { get; set; }
-            public string NomeDoCliente { get; set; }
-            public int ProdutoID { get; set; }
-            public string NomeDoProduto { get; set; }
-            public string Marca { get; set; }
-            public string Categoria { get; set; }
-            public decimal Valor { get; set; }
-            public decimal ValorTotal { get; set; }
-            public int Quantidade { get; set; }
-        }
-
-        private List<PedidoItem> listaPedido = new List<PedidoItem>();
+        }               
 
         private void btnAdicionarProduto_Click(object sender, EventArgs e)
         {
-            // Obtenha as informações do cliente, produto, entrega, total a receber, total pago e troco
-            int vendaId = ObtenhaProximoIDVenda();  // Substitua com a lógica para obter o próximo ID de venda
+            int vendaId = ObtenhaProximoIDVenda();
             int clienteId = Convert.ToInt32(txtClienteID.Text);
             string nomeDoCliente = txtNomeCliente.Text;
             int produtoId = Convert.ToInt32(txtProdutoID.Text);
@@ -215,178 +92,9 @@ namespace DBY___TCC.Formularios.Venda
                 totalAReceber
             );
 
-            // Recalcule o valor total da compra
             AtualizarValorTotalCompra();
-
-            // Limpe os campos após adicionar o produto
             LimparCampos();
-        }
-
-        private int ObtenhaProximoIDVenda()
-        {
-            // Suponhamos que você tenha um campo no seu banco de dados que mantém o número de vendas realizadas
-            // Você pode consultar esse campo e adicionar 1 para obter o próximo ID
-            int numeroDeVendas = ConsultarNumeroDeVendasNoBancoDeDados(); // Implemente a função para consultar o banco de dados
-
-            // Adicione 1 ao número de vendas para obter o próximo ID
-            int proximoID = numeroDeVendas + 1;
-
-            return proximoID;
-        }
-
-        private decimal CalcularTroco()
-        {
-            decimal totalAReceber = CalcularValorTotalDaVenda();
-            decimal totalPago;
-
-            if (decimal.TryParse(txtTotalPago.Text, out totalPago))
-            {
-                decimal troco = totalPago - totalAReceber;
-                return troco;
-            }
-
-            // Se a conversão do valor pago falhar, retorne 0 para o troco
-            return 0;
-        }
-
-        private int ConsultarNumeroDeVendasNoBancoDeDados()
-        {
-            int numeroDeVendas = 0;
-
-            // Conecte-se ao banco de dados (substitua a ConnectionString pelo seu caminho)
-            using (SqlConnection connection = new SqlConnection(ConnectionHelper.ConnectionString))
-            {
-                connection.Open();
-
-                // Consulta SQL para obter o número de vendas realizadas
-                string query = "SELECT COUNT(*) FROM Vendas"; // Assumindo que "Vendas" é a tabela de vendas
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    // Execute o comando SQL e obtenha o número de vendas
-                    numeroDeVendas = (int)command.ExecuteScalar();
-                }
-            }
-
-            return numeroDeVendas;
-        }
-
-        private decimal ObterValorPagoDoUsuario()
-        {
-            decimal valorPago;
-
-            if (decimal.TryParse(txtTotalPago.Text.Trim(), NumberStyles.Currency, CultureInfo.CurrentCulture, out valorPago))
-            {
-                // O valor foi informado corretamente
-                return valorPago;
-            }
-            else
-            {
-                MessageBox.Show("Informe um valor de pagamento válido.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return 0m; // Pode retornar um valor padrão (0) ou lançar uma exceção, dependendo do seu requisito
-            }
-        }
-
-        private decimal CalcularValorTotalDaVenda()
-        {
-            decimal valorTotal = 0;
-
-            foreach (DataGridViewRow row in dataGridViewPedido.Rows)
-            {
-                // Verifique se a célula não é nula e se o valor é um decimal válido
-                if (row.Cells["TotalAReceber"].Value != null &&
-                    decimal.TryParse(row.Cells["TotalAReceber"].Value.ToString(), out decimal valorTotalItem))
-                {
-                    valorTotal += valorTotalItem;
-                }
-            }
-
-            return valorTotal;
-        }
-
-        private void LimparCampos()
-        {
-            // Limpe os campos ou redefina-os conforme necessário
-            txtProdutoID.Text = string.Empty;
-            txtNomeProduto.Text = string.Empty;
-            txtMarca.Text = string.Empty;
-            txtCategoria.Text = string.Empty;
-            txtValorProduto.Text = string.Empty;
-            numericQuantidadeProdutos.Value = 0; // Defina o valor padrão
-            chcEntregarPedido.Checked = false; // Desmarque a caixa de seleção de entrega
-            txtTotalPago.Text = string.Empty;
-            txtTroco.Text = string.Empty;
-        }
-
-        private void AtualizarDataGridViewPedido()
-        {
-            dataGridViewPedido.Rows.Clear();
-
-            foreach (PedidoItem item in listaPedido)
-            {
-                dataGridViewPedido.Rows.Add(
-                    item.ClienteID,
-                    item.NomeDoCliente,
-                    item.ProdutoID,
-                    item.NomeDoProduto,
-                    item.Marca,
-                    item.Categoria,
-                    item.Valor,
-                    item.ValorTotal,
-                    item.Quantidade
-                );
-            }
-        }
-
-        private void AtualizarValorTotalCompra()
-        {
-            decimal valorTotalCompra = 0.0m;
-
-            foreach (DataGridViewRow row in dataGridViewPedido.Rows)
-            {
-                decimal valorDoProduto = Convert.ToDecimal(row.Cells["ValorDoProduto"].Value);
-                int quantidade = Convert.ToInt32(row.Cells["Quantidade"].Value);
-                decimal valorTotalItem = valorDoProduto * quantidade;
-                row.Cells["TotalAReceber"].Value = valorTotalItem;
-                valorTotalCompra += valorTotalItem;
-            }
-
-            txtTotalReceber.Text = valorTotalCompra.ToString("C");
-        }
-
-        private void dataGridViewPedido_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dataGridViewPedido.Columns["Quantidade"].Index ||
-                e.ColumnIndex == dataGridViewPedido.Columns["ValorDoProduto"].Index)
-            {
-                AtualizarValorTotalCompra();
-            }
-        }
-
-        private void CalcularValorTotalAReceber()
-        {
-            decimal valorTotalCompra = 0;
-
-            foreach (DataGridViewRow row in dataGridViewPedido.Rows)
-            {
-                int quantidade = Convert.ToInt32(row.Cells[8].Value);
-                decimal valorUnitario = Convert.ToDecimal(row.Cells[6].Value);
-                decimal valorTotal = valorUnitario * quantidade;
-                valorTotalCompra += valorTotal;
-            }
-
-            txtTotalReceber.Text = $"{valorTotalCompra:C}";
-        }
-
-        //private void dataGridViewPedido_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    if (e.ColumnIndex == 8)
-        //    {
-        //        CalcularValorTotalAReceber();
-
-        //        CalcularTroco();
-        //    }
-        //}
+        }       
 
         private void btnVender_Click(object sender, EventArgs e)
         {
@@ -457,7 +165,7 @@ namespace DBY___TCC.Formularios.Venda
 
                 // Limpar a DataGridView e outros campos
                 dataGridViewPedido.Rows.Clear();
-                LimparCampos();
+                LimparCamposVenda();
 
                 // Limpar as variáveis de rastreamento
                 totalAReceber = 0m;
@@ -475,6 +183,87 @@ namespace DBY___TCC.Formularios.Venda
             }
         }
 
+        #region Eventos
+
+        private void LimparCampos()
+        {
+            // Limpe os campos ou redefina-os conforme necessário
+            txtProdutoID.Text = string.Empty;
+            txtNomeProduto.Text = string.Empty;
+            txtMarca.Text = string.Empty;
+            txtCategoria.Text = string.Empty;
+            txtValorProduto.Text = string.Empty;
+            numericQuantidadeProdutos.Value = 0; // Defina o valor padrão
+            chcEntregarPedido.Checked = false; // Desmarque a caixa de seleção de entrega
+            txtTotalPago.Text = string.Empty;
+            txtTroco.Text = string.Empty;
+        }
+
+        private void LimparCamposVenda()
+        {
+            // Limpe os campos ou redefina-os conforme necessário
+            txtClienteID.Text = string.Empty;
+            txtNomeCliente.Text = string.Empty;
+            txtProdutoID.Text = string.Empty;
+            txtNomeProduto.Text = string.Empty;
+            txtMarca.Text = string.Empty;
+            txtCategoria.Text = string.Empty;
+            txtValorProduto.Text = string.Empty;
+            numericQuantidadeProdutos.Value = 0; // Defina o valor padrão
+            chcEntregarPedido.Checked = false; // Desmarque a caixa de seleção de entrega
+            txtTotalPago.Text = string.Empty;
+            txtTroco.Text = string.Empty;
+        }
+
+        #endregion Eventos
+
+        #region Calculos
+
+        private int ObtenhaProximoIDVenda()
+        {
+            int numeroDeVendas = ConsultarNumeroDeVendasNoBancoDeDados();
+
+            int proximoID = numeroDeVendas + 1;
+
+            return proximoID;
+        }
+
+        private int ConsultarNumeroDeVendasNoBancoDeDados()
+        {
+            int numeroDeVendas = 0;
+
+            using (SqlConnection connection = new SqlConnection(ConnectionHelper.ConnectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT COUNT(*) FROM Vendas";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    numeroDeVendas = (int)command.ExecuteScalar();
+                }
+            }
+
+            return numeroDeVendas;
+        }
+
+        private decimal CalcularValorTotalDaVenda()
+        {
+            decimal valorTotal = 0;
+
+            foreach (DataGridViewRow row in dataGridViewPedido.Rows)
+            {
+                // Verifique se a célula não é nula e se o valor é um decimal válido
+                if (row.Cells["TotalAReceber"].Value != null &&
+                    decimal.TryParse(row.Cells["TotalAReceber"].Value.ToString(), out decimal valorTotalItem))
+                {
+                    valorTotal += valorTotalItem;
+                }
+            }
+
+            return valorTotal;
+        }
+
         private void btnCalcularTotalPago_Click(object sender, EventArgs e)
         {
             decimal valorTotalCompra = CalcularValorTotalDaVenda();
@@ -485,7 +274,6 @@ namespace DBY___TCC.Formularios.Venda
                 {
                     decimal troco = valorPago - valorTotalCompra;
                     txtTroco.Text = $"R$ {troco:F2}";
-                    //txtTotalReceber.Text = $"R$ {valorTotalCompra:F2}"; // Atualize o total a receber
                 }
                 else
                 {
@@ -497,5 +285,156 @@ namespace DBY___TCC.Formularios.Venda
                 MessageBox.Show("Informe um valor de pagamento válido.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void AtualizarValorTotalCompra()
+        {
+            decimal valorTotalCompra = 0.0m;
+
+            foreach (DataGridViewRow row in dataGridViewPedido.Rows)
+            {
+                decimal valorDoProduto = Convert.ToDecimal(row.Cells["ValorDoProduto"].Value);
+                int quantidade = Convert.ToInt32(row.Cells["Quantidade"].Value);
+                decimal valorTotalItem = valorDoProduto * quantidade;
+                row.Cells["TotalAReceber"].Value = valorTotalItem;
+                valorTotalCompra += valorTotalItem;
+            }
+
+            txtTotalReceber.Text = valorTotalCompra.ToString("C");
+        }
+
+        private void dataGridViewPedido_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dataGridViewPedido.Columns["Quantidade"].Index ||
+                e.ColumnIndex == dataGridViewPedido.Columns["ValorDoProduto"].Index)
+            {
+                AtualizarValorTotalCompra();
+            }
+        }
+
+        #endregion Calculos        
+
+        #region Informações de Cliente/Pedido/Produto
+        private class ProdutoInfo
+        {
+            public string NomeDoProduto { get; set; }
+            public decimal PrecoDeCusto { get; set; }
+            public decimal PrecoDeVenda { get; set; }
+            public string Marca { get; set; }
+            public string Categoria { get; set; }
+        }
+
+        public class PedidoItem
+        {
+            public int ClienteID { get; set; }
+            public string NomeDoCliente { get; set; }
+            public int ProdutoID { get; set; }
+            public string NomeDoProduto { get; set; }
+            public string Marca { get; set; }
+            public string Categoria { get; set; }
+            public decimal Valor { get; set; }
+            public decimal ValorTotal { get; set; }
+            public int Quantidade { get; set; }
+        }
+
+        private List<PedidoItem> listaPedido = new List<PedidoItem>();
+
+        private ProdutoInfo ObterInformacoesDoProduto(int produtoID)
+        {
+            ProdutoInfo produto = null;
+
+            using (SqlConnection conexao = new SqlConnection(ConnectionHelper.ConnectionString))
+            {
+                conexao.Open();
+                string query = "SELECT NomeDoProduto, PrecoDeCusto, PrecoDeVenda, Marca, Categoria FROM Produtos WHERE ID = @ProdutoID";
+                using (SqlCommand cmd = new SqlCommand(query, conexao))
+                {
+                    cmd.Parameters.AddWithValue("@ProdutoID", produtoID);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            produto = new ProdutoInfo
+                            {
+                                NomeDoProduto = reader["NomeDoProduto"].ToString(),
+                                PrecoDeCusto = (decimal)reader["PrecoDeCusto"],
+                                PrecoDeVenda = (decimal)reader["PrecoDeVenda"],
+                                Marca = reader["Marca"].ToString(),
+                                Categoria = reader["Categoria"].ToString()
+                            };
+                        }
+                    }
+                }
+            }
+
+            return produto;
+        }
+
+        private void btnPesquisarProduto_Click(object sender, EventArgs e)
+        {
+            int produtoID;
+            if (int.TryParse(txtProdutoID.Text, out produtoID))
+            {
+                ProdutoInfo produto = ObterInformacoesDoProduto(produtoID);
+
+                if (produto != null)
+                {
+                    txtNomeProduto.Text = produto.NomeDoProduto;
+                    txtValorProduto.Text = produto.PrecoDeVenda.ToString("0.00");
+                    txtMarca.Text = produto.Marca;
+                    txtCategoria.Text = produto.Categoria;
+                }
+                else
+                {
+                    MessageBox.Show("Produto não encontrado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Informe um Produto ID válido", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private string ObterNomeDoCliente(int clienteID)
+        {
+            string nomeDoCliente = "";
+
+            using (SqlConnection conexao = new SqlConnection(ConnectionHelper.ConnectionString))
+            {
+                conexao.Open();
+                string query = "SELECT Nome FROM Clientes WHERE ID = @ClienteID";
+                using (SqlCommand cmd = new SqlCommand(query, conexao))
+                {
+                    cmd.Parameters.AddWithValue("@ClienteID", clienteID);
+                    nomeDoCliente = (string)cmd.ExecuteScalar();
+                }
+            }
+
+            return nomeDoCliente;
+        }
+
+        private void btnPesquisarCliente_Click(object sender, EventArgs e)
+        {
+            int clienteID;
+            if (int.TryParse(txtClienteID.Text, out clienteID))
+            {
+                string nomeDoCliente = ObterNomeDoCliente(clienteID);
+
+                if (!string.IsNullOrEmpty(nomeDoCliente))
+                {
+                    txtNomeCliente.Text = nomeDoCliente;
+                }
+                else
+                {
+                    MessageBox.Show("Cliente não encontrado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Informe um Cliente ID válido", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        #endregion Informações de Cliente/Pedido/Produto
+
     }
 }
