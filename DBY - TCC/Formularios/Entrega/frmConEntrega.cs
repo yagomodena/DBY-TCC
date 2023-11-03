@@ -1,4 +1,6 @@
 ﻿using DBY___TCC.Classes;
+using DBY___TCC.Relatorios;
+using DBY___TCC.Relatorios.Entrega;
 using DBY___TCC.Service;
 using System;
 using System.Collections.Generic;
@@ -174,6 +176,36 @@ namespace DBY___TCC.Formularios.Entrega
                     cmd.ExecuteNonQuery();
                 }
             }
-        }        
+        }
+
+        private void btnRelatorios_Click(object sender, EventArgs e)
+        {
+            var dt = GerarDadosRelatorio();
+            using (var frm = new frmRelEntregas(dt))
+            {
+                frm.ShowDialog();
+            }
+        }
+
+        private DataTable GerarDadosRelatorio()
+        {
+            var dt = new DataTable();
+            dt.Columns.Add("Venda ID");
+            dt.Columns.Add("Nome do Cliente");
+            dt.Columns.Add("Produto");
+            dt.Columns.Add("Entrega");
+            dt.Columns.Add("Valor");
+
+            foreach (DataGridViewRow item in dataGridView.Rows)
+            {
+                dt.Rows.Add(item.Cells[0].Value.ToString(),
+                    item.Cells[2].Value.ToString(),
+                    item.Cells[4].Value.ToString(),
+                    item.Cells[9].Value.ToString(),
+                    item.Cells[10].Value.ToString());
+            }
+
+            return dt;
+        }
     }
 }
