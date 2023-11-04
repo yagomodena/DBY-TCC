@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Diagnostics.Tracing;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
@@ -42,6 +41,7 @@ namespace DBY___TCC.Formularios.Venda
 
             dataGridViewPedido.Columns.Add("Troco", "Troco");
             dataGridViewPedido.Columns["Troco"].Visible = false;
+            dataGridViewPedido.Columns.Add("DataDaVenda", "Data da Venda");
         }
 
         private void frmVenda_Load(object sender, EventArgs e)
@@ -76,6 +76,7 @@ namespace DBY___TCC.Formularios.Venda
             int quantidade = Convert.ToInt32(numericQuantidadeProdutos.Value);
             bool entrega = chcEntregarPedido.Checked;
             decimal totalAReceber = CalcularValorTotalDaVenda();
+            DateTime dateTime = DateTime.Now.Date;
 
             // Adicione os valores na DataGridView
             dataGridViewPedido.Rows.Add(
@@ -89,7 +90,8 @@ namespace DBY___TCC.Formularios.Venda
                 valorDoProduto,
                 quantidade,
                 entrega,
-                totalAReceber
+                totalAReceber,
+                dateTime
             );
 
             AtualizarValorTotalCompra();
@@ -127,11 +129,12 @@ namespace DBY___TCC.Formularios.Venda
                             decimal valorDoProduto = Convert.ToDecimal(row.Cells["ValorDoProduto"].Value);
                             int quantidadeDeProduto = Convert.ToInt32(row.Cells["Quantidade"].Value);
                             bool entrega = (bool)row.Cells["Entrega"].Value;
+                            DateTime dateTime = DateTime.Now.Date;
 
                             string entregaValue = entrega ? "SIM" : "NÃO"; // Converte a variável entrega em "SIM" ou "NÃO"
 
-                            string query = "INSERT INTO Vendas (ClienteID, NomeDoCliente, ProdutoID, NomeDoProduto, MarcaDoProduto, CategoriaDoProduto, ValorDoProduto, QuantidadeDeProduto, Entrega, TotalAReceber, TotalPago, Troco) " +
-                                "VALUES (@ClienteID, @NomeDoCliente, @ProdutoID, @NomeDoProduto, @MarcaDoProduto, @CategoriaDoProduto, @ValorDoProduto, @QuantidadeDeProduto, @Entrega, @TotalAReceber, @TotalPago, @Troco)";
+                            string query = "INSERT INTO Vendas (ClienteID, [Nome Do Cliente], ProdutoID, [Nome Do Produto], [Marca Do Produto], [Categoria Do Produto], [Valor Do Produto], [Quantidade De Produto], Entrega, [Total a Receber], [Total Pago], Troco, [Data da Venda]) " +
+                                "VALUES (@ClienteID, @NomeDoCliente, @ProdutoID, @NomeDoProduto, @MarcaDoProduto, @CategoriaDoProduto, @ValorDoProduto, @QuantidadeDeProduto, @Entrega, @TotalAReceber, @TotalPago, @Troco, @Data)";
 
                             using (SqlCommand cmd = new SqlCommand(query, conexao))
                             {
@@ -147,6 +150,7 @@ namespace DBY___TCC.Formularios.Venda
                                 cmd.Parameters.AddWithValue("@TotalAReceber", totalAReceber);
                                 cmd.Parameters.AddWithValue("@TotalPago", valorPago);
                                 cmd.Parameters.AddWithValue("@Troco", troco);
+                                cmd.Parameters.AddWithValue("@Data", dateTime);
 
                                 cmd.ExecuteNonQuery();
                             }

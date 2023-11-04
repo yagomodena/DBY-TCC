@@ -1,16 +1,10 @@
 ﻿using DBY___TCC.Classes;
-using DBY___TCC.Relatorios;
 using DBY___TCC.Relatorios.Entrega;
 using DBY___TCC.Service;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DBY___TCC.Formularios.Entrega
@@ -96,9 +90,9 @@ namespace DBY___TCC.Formularios.Entrega
             {
                 DataGridViewRow selectedRow = dataGridView.SelectedRows[0];
 
-                if (selectedRow.Cells["NomeDoCliente"].Value != null)
+                if (selectedRow.Cells["Nome do Cliente"].Value != null)
                 {
-                    cliente = selectedRow.Cells["NomeDoCliente"].Value.ToString();
+                    cliente = selectedRow.Cells["Nome do Cliente"].Value.ToString();
                 }
 
                 int vendaID = Convert.ToInt32(dataGridView.SelectedRows[0].Cells["VendaID"].Value);
@@ -138,9 +132,9 @@ namespace DBY___TCC.Formularios.Entrega
 
                 DataGridViewRow selectedRow = dataGridView.SelectedRows[0];
 
-                if (selectedRow.Cells["NomeDoCliente"].Value != null)
+                if (selectedRow.Cells["Nome do Cliente"].Value != null)
                 {
-                    cliente = selectedRow.Cells["NomeDoCliente"].Value.ToString();
+                    cliente = selectedRow.Cells["Nome do Cliente"].Value.ToString();
                 }
 
                 int vendaID = Convert.ToInt32(dataGridView.SelectedRows[0].Cells["VendaID"].Value);

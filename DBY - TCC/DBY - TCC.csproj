@@ -343,6 +343,7 @@
     </Compile>
     <Compile Include="Service\DBCliente.cs" />
     <Compile Include="Service\DBEntrega.cs" />
+    <Compile Include="Service\DBFaturamento.cs" />
     <Compile Include="Service\DBMarca.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="Formularios\Cliente\frmCadCliente.resx">
