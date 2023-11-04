@@ -41,6 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnFiltrar = new System.Windows.Forms.Button();
+            this.labelSomaTotalReceber = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -209,11 +210,23 @@
             this.btnFiltrar.UseVisualStyleBackColor = true;
             this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
+            // labelSomaTotalReceber
+            // 
+            this.labelSomaTotalReceber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelSomaTotalReceber.AutoSize = true;
+            this.labelSomaTotalReceber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSomaTotalReceber.Location = new System.Drawing.Point(233, 42);
+            this.labelSomaTotalReceber.Name = "labelSomaTotalReceber";
+            this.labelSomaTotalReceber.Size = new System.Drawing.Size(0, 20);
+            this.labelSomaTotalReceber.TabIndex = 34;
+            // 
             // frmConFaturamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1009, 479);
+            this.Controls.Add(this.labelSomaTotalReceber);
             this.Controls.Add(this.btnFiltrar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -251,5 +264,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnFiltrar;
+        private System.Windows.Forms.Label labelSomaTotalReceber;
     }
 }
