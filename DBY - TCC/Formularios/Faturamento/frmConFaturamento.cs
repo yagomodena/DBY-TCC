@@ -97,7 +97,9 @@ namespace DBY___TCC.Formularios.Faturamento
                 return;
             }
 
-            string query = "SELECT * FROM Vendas WHERE [Data da Venda] >= @DataInicial AND [Data da Venda] <= @DataFinal";
+            string query = "SELECT VendaID, ClienteID, [Nome do Cliente], ProdutoID, [Nome do Produto], [Marca do Produto], [Categoria do Produto]," +
+                "[Valor do Produto], [Quantidade de Produto], [Total a Receber], [Total Pago], Troco, [Data da Venda] " +
+                "FROM Vendas WHERE [Data da Venda] >= @DataInicial AND [Data da Venda] <= @DataFinal";
 
             using (SqlConnection conexao = new SqlConnection(ConnectionHelper.ConnectionString))
             {
@@ -129,7 +131,7 @@ namespace DBY___TCC.Formularios.Faturamento
                 }
             }
 
-            labelSomaTotalReceber.Text = $"Soma Total a Receber: R$ {somaTotalReceber:F2}";
+            labelSomaTotalReceber.Text = $"Faturamento Total: R$ {somaTotalReceber:F2}";
         }
     }
 }
